@@ -32,70 +32,68 @@ time.sleep(0.5)
 print ("Ya puedes comenzar a adivinar")
 time.sleep(0.5)
 
-#here we set the secret
+#aqui se establece la palabra
 word = "python"
 
-#creates an variable with an empty value
+#creo una variable vacia 
 guesses = ''
 
-#determine the number of turns
+#determino los turns y creo un ciclo while
 
-# Create a while loop
-
-#check if the turns are more than zero
+#mientras se tengan oportunidades de adivinar
 while turnos > 0:         
 
-    # make a counter that starts with zero
-    failed = 0             
+    # contador de intentos fallidos
+    fail = 0             
 
-    # for every character in secret_word    
+    # para cada caracter en la palabra  
     for char in word:      
 
-    # see if the character is in the players guess
+    # si el caracter esta en lo adivinado por el jugador
         if char in guesses:    
     
-        # print then out the character
+        # imprimir letra
             print (char)    
 
         else:
     
-        # if not found, print a dash
+        # si no imprimir _
             print ("_")     
        
-        # and increase the failed counter with one
-            failed += 1    
+        # sumar 1 al contador de fallas
+            fail += 1    
 
-    # if failed is equal to zero
+    # si no hay fallas
 
-    # print You Won
+    # ganaste
     if failed == 0:        
         print ("¡Ganáste!")  
 
-    # exit the script
+    # salir del script
         break              
 
     print
 
-    # ask the user go guess a character
+    # adivine una letra al usuario
     guess = input("Adivina una letra: ") 
 
-    # set the players guess to guesses
+    # 
     guesses += guess                    
 
-    # if the guess is not found in the secret word
+    # si la letra no esta en la palabra
     if guess not in word:  
  
-     # turns counter decreases with 1 (now 9)
+     # los turnos se disminuyen
         turnos -= 1        
  
-    # print wrong
+    # mal
         print ("Te equivocaste...")    
  
-    # how many turns are left
+    # cuantos turnos quedan
         print ("Ahora tienes", + turnos, 'intentos')
  
-    # if the turns are equal to zero
+    # cuando se llega a 0 en turnos
         if turnos == 0:           
     
-        # print "You Lose"
+        # perdiste
             print ("Perdiste")
