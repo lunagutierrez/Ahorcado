@@ -6,94 +6,131 @@ Created on Sun Mar 29 18:00:26 2020
 """
 #importar time
 import time
+import palabras
+import random 
+#import random
 
 #Bienvenida
-user = input("¿Nombre de usuario? ")
 
-print ("Hola, " + user, "Juguemos ahorcado!")
+def setup_ind():
+    user = input("¿Nombre de usuario? ")
+
+    print ("Hola, " + user, "Juguemos ahorcado!")
+    
 
 #esperar un segundo
-time.sleep(1)
+    time.sleep(1)
 
-lev = int(input("Escoge un nivel de dificultad entre 3 y 6: "))  
-while True:
-    if 3 <= lev <= 6:
-        print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
-    else:
-        my_error = ValueError("Debes escoger un nivel entre 3 y 6")
-        raise my_error
+    def lev():
+        while True:
+            lev = int(input("Escoge un nivel de dificultad entre 3 y 6: "))  
+            try:
+                if 3 <= lev <= 6:
+                    print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
+                    break
+                else:
+                    print('{0} is not between 4 and 16'.format(lev))
+            except ValueError:
+                print('{0} is not an integer between 4 and 16'.format(lev))
+                
+    lev()
     
-time.sleep(0.5)
+                
+    time.sleep(0.5)
 
-turnos = int(lev-1)
-print("Tienes", turnos, "intentos")
+    turnos = 5
+    print("Tienes", turnos, "intentos")
 
-time.sleep(0.5)
-print ("Ya puedes comenzar a adivinar")
-time.sleep(0.5)
+    time.sleep(0.5)
+    print ("Ya puedes comenzar a adivinar")
+    time.sleep(0.5)
 
-#aqui se establece la palabra
-word = "python"
-
-#creo una variable vacia 
-guesses = ''
-
-#determino los turns y creo un ciclo while
-
-#mientras se tengan oportunidades de adivinar
-while turnos > 0:         
-
-    # contador de intentos fallidos
-    fail = 0             
-
-    # para cada caracter en la palabra  
-    for char in word:      
-
-    # si el caracter esta en lo adivinado por el jugador
-        if char in guesses:    
+#establecemos la palabra
     
-        # imprimir letra
-            print (char)    
+    def len_word(lev):
+        for lev in range(3,7):
+            if lev == 3:
+                w = palabras.pal3
+                break 
+            elif lev == 4:
+                w = palabras.pal4
+                break    
+            elif lev == 5:
+                w = palabras.pal5
+                break    
+            elif lev == 6:
+                w = palabras.pal6
+                break
+            else:
+                print("No es valido el nivel de dificultad escogido")
 
-        else:
+        word = w[random.randint(0, 46)]
+        return word
+
+#creamos la variable de guesses vacia 
+    guesses = ''
+
+#determinamos la palabra y el numero de turnos 
+    word = len_word(lev)
+# ciclo while 
+
+#cmientras hayan turnos se ejecuta la funcion
+    while turnos > 0:         
+
+    # contados desde 0
+        failed = 0             
+
+    # para cada letra en la palabra
+        for char in word:      
+
+    # mirar si la letra esta en lo adivinado
+            if char in guesses:    
     
-        # si no imprimir _
-            print ("_")     
+        # imprimir el caracter
+                print (char)    
+
+            else:
+    
+        # si no imprimir -
+                print ("_")     
        
-        # sumar 1 al contador de fallas
-            fail += 1    
+        # e incrementar el numero de fallas
+                failed += 1    
 
     # si no hay fallas
 
-    # ganaste
-    if failed == 0:        
-        print ("¡Ganáste!")  
+    # Gano!
+        if failed == 0:        
+            print ("¡Ganáste!")  
 
-    # salir del script
-        break              
+    # salir
+            break              
 
-    print
+        print
 
-    # adivine una letra al usuario
-    guess = input("Adivina una letra: ") 
+    # adivine una letra
+        guess = input("Adivina una letra: ") 
 
-    # 
-    guesses += guess                    
+    # de guess a guesses
+        guesses += guess                    
 
-    # si la letra no esta en la palabra
-    if guess not in word:  
+    # si guess no esta en palabra
+        if guess not in word:  
  
-     # los turnos se disminuyen
-        turnos -= 1        
+     # turnos se disminuyen
+            turnos -= 1        
  
-    # mal
-        print ("Te equivocaste...")    
+    # imprima se equivoco
+            print ("Te equivocaste...")    
  
-    # cuantos turnos quedan
-        print ("Ahora tienes", + turnos, 'intentos')
+    # turnos que quedan
+            print ("Ahora tienes", + turnos, 'intentos')
  
-    # cuando se llega a 0 en turnos
-        if turnos == 0:           
+    # si se queda sin turnos
+            if turnos == 0:           
     
-        # perdiste
-            print ("Perdiste")
+        # Perdio!
+                print ("Perdiste")
+
+
+setup_ind()
