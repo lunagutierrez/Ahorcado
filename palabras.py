@@ -42,7 +42,6 @@ pal9=["corolario","diafragma","antebrazo","sarampion","zanahoria","higienico","c
 pal10=["videojuego","matematica","computador","asociacion","hemisferio","granadilla","hipotalamo","arquitecto","calendario","tecnologia","hipopotamo","crucigrama","aritmetica","matrimonio","salchichon","transexual","psicologia","diversidad","tartamudeo","comentario","abecedario","superheroe","vacacional","uniformado","uzbekistan","jamaiquino","judicatura","obligacion","oficinista","defectuoso","cumpleaños","disciplina","plastilina","natureleza","mendicidad","zarigueyas","adaptacion","campesinos","lentejuela","despiadado","etnografia","transmitir","crepusculo","hospitales","sarpullido"]
 
 """ 
-#BEGINNING-OF-EXECUTION
 print (len(pal3))
 print (len(pal4))
 print (len(pal5))
