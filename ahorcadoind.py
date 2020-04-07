@@ -21,57 +21,58 @@ def setup_ind():
 #esperar un segundo
     time.sleep(1)
 
-    def lev():
+    #lev = int(input("Escoge un nivel de dificultad entre 3 y 6: "))  
+    
+    def level():
         while True:
             lev = int(input("Escoge un nivel de dificultad entre 3 y 6: "))  
             try:
-                if 3 <= lev <= 6:
+                if lev == 3:
                     print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
+                    print ("Ya puedes comenzar a adivinar")
+                    palabra = palabras.pal3
+                    break
+                elif lev == 4:
+                    print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
+                    print ("Ya puedes comenzar a adivinar")
+                    palabra = palabras.pal4
+                    break
+                elif lev == 5:
+                    print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
+                    print ("Ya puedes comenzar a adivinar")
+                    palabra = palabras.pal5
+                    break
+                elif lev == 6:
+                    print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
+                    print ("Ya puedes comenzar a adivinar")
+                    palabra = palabras.pal6
                     break
                 else:
-                    print('{0} is not between 4 and 16'.format(lev))
+                    print('{0} no esta entre 3 y 6'.format(lev))
             except ValueError:
-                print('{0} is not an integer between 4 and 16'.format(lev))
+                print('{0} no es un entero entre 3 y 6'.format(lev))
                 
-    lev()
-    
-                
+        pal = random.choice(palabra)
+        return pal        
+         
+            
     time.sleep(0.5)
 
     turnos = 5
     print("Tienes", turnos, "intentos")
 
     time.sleep(0.5)
-    print ("Ya puedes comenzar a adivinar")
+    print("Ahora debes escoger un nivel de dificultad")
     time.sleep(0.5)
 
 #establecemos la palabra
-    
-    def len_word(lev):
-        for lev in range(3,7):
-            if lev == 3:
-                w = palabras.pal3
-                break 
-            elif lev == 4:
-                w = palabras.pal4
-                break    
-            elif lev == 5:
-                w = palabras.pal5
-                break    
-            elif lev == 6:
-                w = palabras.pal6
-                break
-            else:
-                print("No es valido el nivel de dificultad escogido")
 
-        word = w[random.randint(0, 46)]
-        return word
 
 #creamos la variable de guesses vacia 
     guesses = ''
 
 #determinamos la palabra y el numero de turnos 
-    word = len_word(lev)
+    word = level()
 # ciclo while 
 
 #cmientras hayan turnos se ejecuta la funcion
@@ -130,7 +131,8 @@ def setup_ind():
             if turnos == 0:           
     
         # Perdio!
-                print ("Perdiste")
+                print ("Perdiste!")
+                print("La palabra era " +word)
 
 
 setup_ind()
