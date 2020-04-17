@@ -4,11 +4,14 @@ Created on Sun Mar 29 18:00:26 2020
 
 @author: lunag
 """
-#importar time
+#importar las librerías necesarias
+
 import time
 import palabras
 import random 
-#import random
+import turtle
+import dibujo
+
 
 #Bienvenida
 
@@ -21,11 +24,10 @@ def setup_ind():
 #esperar un segundo
     time.sleep(1)
 
-    #lev = int(input("Escoge un nivel de dificultad entre 3 y 6: "))  
-    
+    #lev = int(input("Escoge un nivel de dificultad entre 3 y 10: "))  
     def level():
         while True:
-            lev = int(input("Escoge un nivel de dificultad entre 3 y 6: "))  
+            lev = int(input("Escoge un nivel de dificultad entre 3 y 10: "))  
             try:
                 if lev == 3:
                     print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
@@ -47,18 +49,39 @@ def setup_ind():
                     print ("Ya puedes comenzar a adivinar")
                     palabra = palabras.pal6
                     break
+                elif lev == 7:
+                    print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
+                    print ("Ya puedes comenzar a adivinar")
+                    palabra = palabras.pal7
+                    break
+                elif lev ==8:
+                    print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
+                    print ("Ya puedes comenzar a adivinar")
+                    palabra = palabras.pal8
+                    break
+                elif lev ==9:
+                    print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
+                    print ("Ya puedes comenzar a adivinar")
+                    palabra = palabras.pal9
+                    break
+                elif lev ==10:
+                    print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
+                    print ("Ya puedes comenzar a adivinar")
+                    palabra = palabras.pal10
+                    break
                 else:
-                    print('{0} no esta entre 3 y 6'.format(lev))
+                    print('{0} no esta entre 3 y 10'.format(lev))
             except ValueError:
-                print('{0} no es un entero entre 3 y 6'.format(lev))
+                print('{0} no es un entero entre 3 y 10'.format(lev))
                 
         pal = random.choice(palabra)
-        return pal        
+        return pal  
+          
          
             
     time.sleep(0.5)
 
-    turnos = 5
+    turnos = 16
     print("Tienes", turnos, "intentos")
 
     time.sleep(0.5)
@@ -73,6 +96,16 @@ def setup_ind():
 
 #determinamos la palabra y el numero de turnos 
     word = level()
+    
+#crear la ventana de turtle
+    turtle.setup(800,800,0,0)
+    wn=turtle.Screen()
+    wn.bgcolor("white")
+    wn.title("Ahorcado")
+    donatello=turtle.Turtle()
+    donatello.color("black")
+    donatello.pensize(3)
+    donatello.hideturtle()
 # ciclo while 
 
 #cmientras hayan turnos se ejecuta la funcion
@@ -102,7 +135,13 @@ def setup_ind():
 
     # Gano!
         if failed == 0:        
-            print ("¡Ganáste!")  
+            print ("¡Ganáste!") 
+            
+    # Cerrar la ventana de turtle
+    
+            turtle.mainloop()
+            turtle.done()
+            turtle.bye()
 
     # salir
             break              
@@ -126,13 +165,54 @@ def setup_ind():
  
     # turnos que quedan
             print ("Ahora tienes", + turnos, 'intentos')
- 
-    # si se queda sin turnos
-            if turnos == 0:           
+            
+    #Dibujo del ahorcado según los intentos que quedan
     
+            if turnos == 15:
+                dibujo.horca(donatello)
+            elif turnos == 14:
+                dibujo.cabeza(donatello)
+            elif turnos == 13:
+                dibujo.tronco(donatello)
+            elif turnos == 12:
+                dibujo.pierna1(donatello)
+            elif turnos == 11:
+                dibujo.pie1(donatello)
+            elif turnos == 10:
+                dibujo.pierna2(donatello)
+            elif turnos == 9:
+                dibujo.pie2(donatello)
+            elif turnos == 8:
+                dibujo.brazo1(donatello)
+            elif turnos == 7:
+                dibujo.mano1(donatello)
+            elif turnos == 6:
+                dibujo.brazo2(donatello)
+            elif turnos == 5:
+                dibujo.mano2(donatello)
+            elif turnos == 4:
+                dibujo.cabello(donatello)
+            elif turnos == 3:
+                dibujo.ojo1(donatello)
+            elif turnos == 2:
+                dibujo.ojo2(donatello)
+            elif turnos == 1:
+                dibujo.boca(donatello)
+            elif turnos == 0:
+                dibujo.lengua(donatello)
+                    
         # Perdio!
-                print ("Perdiste!")
+                print ("¡Ahorcado!")
                 print("La palabra era " +word)
+                
+         # Cerrar la ventana de turtle
+    
+                turtle.mainloop()
+                turtle.done()
+                turtle.bye()
+                
+                
 
-
+#BEGINNING-OF-EXECUTION
 setup_ind()
+#END-OF-EXECUTION
