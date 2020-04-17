@@ -187,17 +187,18 @@ def lengua(t):
     t.forward(12)
     
 #BEGINNING-OF-EXECUTION
-turtle.setup(500,500)
+#La siguiente ejecución debe incluirse en el código antes de comenzar a ejecutar las funciones definidas en dibujo
+"""turtle.setup(500,500)
 wn=turtle.Screen()
 wn.bgcolor("white")
 wn.title("Ahorcado")
 donatello=turtle.Turtle()
 donatello.color("black")
 donatello.pensize(3)
-donatello.hideturtle()
+donatello.hideturtle()"""
 
 #La siguiente ejecución muestra el órden en que debe seguirse la secuencia de partes del cuerpo del hombre para que el dibujo funcione
-horca(donatello)
+"""horca(donatello)
 cabeza(donatello)
 tronco(donatello)
 pierna1(donatello)
@@ -216,5 +217,5 @@ lengua(donatello)
 
 turtle.mainloop()
 turtle.done()
-turtle.bye()
+turtle.bye()"""
 #END-OF-EXECUTION
