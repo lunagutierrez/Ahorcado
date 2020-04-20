@@ -1,6 +1,5 @@
 import turtle
 
-
 def horca(t):
     t.pensize
     t.penup()
@@ -216,9 +215,9 @@ cabello(donatello)
 ojo1(donatello)
 ojo2(donatello)
 boca(donatello)
-lengua(donatello"""
+lengua(donatello)"""
 
-#Gane o pierda el juegador, al final del juego tiene que cerrarse para evitar errores
+#Gane o pierda el juegador, al final del juego tiene que cerrarse la ventana para evitar errores
 """turtle.mainloop()
 turtle.done()
 turtle.bye()"""
