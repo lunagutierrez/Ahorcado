@@ -6,6 +6,7 @@ Created on Wed Apr  1 17:17:34 2020
 """
 import sys
 
+# definición de prueba que nos permite saber si cada palabra de cada lista tiene la longitud correspondiente
 def comprobar(lenw,palx):
     for i in palx:
         if len(i)==lenw:
@@ -21,6 +22,8 @@ def test(pasa):
         msg="Prueba en la línea {0} FALLÓ.".format(lnum)
     print(msg)
     
+ #Nos permite comprobar la definición de prueba
+    
 def testsuite():
     test(comprobar(3,pal3)==True)
     test(comprobar(4,pal4)==True)
@@ -31,7 +34,7 @@ def testsuite():
     test(comprobar(9,pal9)==True)
     test(comprobar(10,pal10)==True)
     
-#BEGINNING-OF-EXECUTION
+
 pal3=["sea", "uno", "pie", "ojo", "ajo", "oca", "sed", "tul", "dos", "tos", "luz", "voz", "tez", "uva", "pan", "mar", "oso", "ola", "sol", "pez", "col", "sal" , "paz", "cal", "rio", "res", "ron", "lio", "mes", "pis", "par", "tio", "mio", "pua", "mes", "sur", "bol", "bar", "ala", "res", "can", "los", "via", "asa", "feo"]
 pal4=["masa", "como", "mopa", "dado", "gafa", "mesa", "copo", "moda", "dedo", "gala", "misa", "cono", "mofa", "dudo", "gama", "musa", "coco", "lona", "gata", "codo", "moja", "gasa", "coso", "mora", "garra", "coto", "mota", "gana", "cojo", "loza", "paso", "lana", "paja", "rana", "tala", "peso", "lama", "mala", "rama", "tapa", "puso", "lava", "mapa", "raza", "mata"]
 pal5=["andes", "apodo", "balas", "besos", "cenas", "clubs", "densa", "dotes", "euros", "entes", "forma", "flaco", "gatos", "grave", "hueco", "hemos", "irian", "hueso", "cobra", "chelo", "labio", "radio", "cinco", "obvio", "madre", "mafia", "ideas", "oblea", "lindo", "canto", "arroz", "perro", "gotas", "queso", "equis", "cacao", "cocoa", "abaco", "reloj", "ayuda", "peine", "dolor", "color", "uvas", "dulce"]
@@ -41,7 +44,9 @@ pal8=["internet","labiales","sociales","biologia","viviparo","longitud","maripos
 pal9=["corolario","diafragma","antebrazo","sarampion","zanahoria","higienico","cuarentena","suculento","australia","enamorado","occidente","relampago","feminismo","eufemismo","prematuro","filosofia","prudencia","mitologia","dieciseis","provincia","enfermero","funciones","fortaleza","mapamundi","dimension","animales","fractales","dieciocho","exactitud","simpatico","inquietud","cincuenta","serenidad","paciencia","inclusion","depresion","romantico","miercoles","crescendo","confesion","barcelona","mordedura","audifonos","bendicion","dramatico"]
 pal10=["videojuego","matematica","computador","asociacion","hemisferio","granadilla","hipotalamo","arquitecto","calendario","tecnologia","hipopotamo","crucigrama","aritmetica","matrimonio","salchichon","transexual","psicologia","diversidad","tartamudeo","comentario","abecedario","superheroe","vacacional","uniformado","uzbekistan","jamaiquino","judicatura","obligacion","oficinista","defectuoso","cumpleaños","disciplina","plastilina","natureleza","mendicidad","zarigueyas","adaptacion","campesinos","lentejuela","despiadado","etnografia","transmitir","crepusculo","hospitales","sarpullido"]
 
+#BEGINNING-OF-EXECUTION
 """ 
+# En las pruebas, imprimimos la longitud de las listas, para asegurarnos que por cada longitud hubiesen 45 palabras
 print (len(pal3))
 print (len(pal4))
 print (len(pal5))
