@@ -4,7 +4,10 @@ Created on Mon Apr  6 18:04:53 2020
 
 @author: lunag
 """
+
 import time
+import turtle
+import dibujo
 
 #import random
 
@@ -19,7 +22,17 @@ def setup_mult():
 #esperar un segundo
     time.sleep(1)
     
+   
+        
     def game():
+        turtle.setup(800,800,0,0)
+        wn=turtle.Screen()
+        wn.bgcolor("white")
+        wn.title("Ahorcado")
+        donatello=turtle.Turtle()
+        donatello.color("black")
+        donatello.pensize(3)
+        donatello.hideturtle()
         while True: 
             lev = int(input("Escojan un nivel de dificultad entre 3 y 10: "))
             try:
@@ -32,7 +45,8 @@ def setup_mult():
                 print('{0} no es un entero entre 3 y 10'.format(lev))
                 
         print (user1 + " deja de mirar la pantalla mientras " + user2 + " digita la palabra que vas a adivinar")
-                
+        
+        
         def palabra1():
             while True:  
                 word = input("Escribe una palabra en minusula de la longitud del nivel de dificultad escogido ")
@@ -50,7 +64,7 @@ def setup_mult():
         word = palabra1()
         time.sleep(0.5)
         print('\n' * 60)
-        turnos = 5
+        turnos = 6
         print("Tienes", turnos, "intentos")
 
         time.sleep(0.5)
@@ -66,6 +80,7 @@ def setup_mult():
 #determinamos la palabra y el numero de turnos 
         
 # ciclo while 
+               
 
 #cmientras hayan turnos se ejecuta la funcion
         while turnos > 0:         
@@ -96,6 +111,7 @@ def setup_mult():
     # Gano!
             if failed == 0:        
                 print ("¡Adivinaste!")  
+                time.sleep(1)
 
     # salir
                 break              
@@ -123,11 +139,40 @@ def setup_mult():
                 print ("Ahora tienes", + turnos, 'intentos')
  
     # si se queda sin turnos
-                if turnos == 0:           
-    
-        # Perdio!
-                    print ("Perdiste!")
+                 # dibujo según los turnos que quedan
+                if turnos == 5:
+                    dibujo.horca(donatello)
+                    dibujo.cabeza(donatello)
+                elif turnos == 4:
+                    dibujo.tronco(donatello)
+                elif turnos == 3:
+                    dibujo.pierna1(donatello)
+                    dibujo.pie1(donatello)
+                elif turnos == 2:
+                    dibujo.pierna2(donatello) 
+                    dibujo.pie2(donatello)
+                elif turnos == 1:
+                    dibujo.brazo1(donatello)
+                    dibujo.mano1(donatello)
+                    dibujo.brazo2(donatello)
+                    dibujo.mano2(donatello)
+                
+            #Cuando el jugador pierde
+            
+                elif turnos == 0:
+                    dibujo.cabello(donatello)
+                    dibujo.ojo1(donatello)
+                    dibujo.ojo2(donatello)
+                    dibujo.boca(donatello)
+                    dibujo.lengua(donatello)
+                
+                    print ("¡Ahorcado!")
                     print("La palabra era " +word)
+                    time.sleep(1)
+                    
+                    break
+        # Perdio!
+        
             
         puntaje1 = turnos * lev * 10
     
@@ -141,6 +186,10 @@ def setup_mult():
 
    
         def palabra2():
+            donatello.clear()
+            donatello.penup()
+            donatello.home()
+            donatello.pendown()
             while True:  
                 word = input("escribe una palabra en minusula de la longitud del nivel de dificultad escogido ")
                 try:
@@ -158,7 +207,7 @@ def setup_mult():
         word = palabra2()
         time.sleep(0.5)
         print('\n' * 60)
-        turnos = 5
+        turnos = 6
         print("Tienes", turnos, "intentos")
 
         time.sleep(0.5)
@@ -171,6 +220,7 @@ def setup_mult():
 #creamos la variable de guesses vacia 
         guesses = ''
 #determinamos la palabra y el numero de turnos 
+        
         
 # ciclo while 
 
@@ -198,16 +248,15 @@ def setup_mult():
                     failed += 1 
                     
     # si no hay fallas
-
-    # Gano!
-            if failed == 0:        
+    
+            if failed == 0:       
+            
+    #Ganó   
                 print ("¡Adivinaste!")  
-
-    # salir
-                break              
-
-            print
-
+                break
+                      
+  
+            
     # adivine una letra
             guess = input("Adivina una letra: ") 
 
@@ -226,13 +275,36 @@ def setup_mult():
     # turnos que quedan
                 print ("Ahora tienes", + turnos, 'intentos')
  
-    # si se queda sin turnos
-                if turnos == 0:           
-    
-        # Perdio!
-                    print ("Perdiste!")
+    # dibujo según los turnos que quedan
+                if turnos == 5:
+                    dibujo.horca(donatello)
+                    dibujo.cabeza(donatello)
+                elif turnos == 4:
+                    dibujo.tronco(donatello)
+                elif turnos == 3:
+                    dibujo.pierna1(donatello)
+                    dibujo.pie1(donatello)
+                elif turnos == 2:
+                    dibujo.pierna2(donatello) 
+                    dibujo.pie2(donatello)
+                elif turnos == 1:
+                    dibujo.brazo1(donatello)
+                    dibujo.mano1(donatello)
+                    dibujo.brazo2(donatello)
+                    dibujo.mano2(donatello)
+                
+            #Cuando el jugador pierde
+            
+                elif turnos == 0:
+                    dibujo.cabello(donatello)
+                    dibujo.ojo1(donatello)
+                    dibujo.ojo2(donatello)
+                    dibujo.boca(donatello)
+                    dibujo.lengua(donatello)
+                
+                    print ("¡Ahorcado!")
                     print("La palabra era " +word)
-                    
+                            
         puntaje2 = turnos * lev * 10
              
         if puntaje1 < puntaje2:
@@ -241,8 +313,11 @@ def setup_mult():
             print(user1 + " ha ganado la partida con un puntaje de {0}".format(puntaje1),", mientras que " + user2 + " solo ha obtenido {0} puntos.".format(puntaje2))
         else:
             print ("Ha habido un empate, ambos jugadores han obtenido un puntaje de {0}".format(puntaje1))
+# Cerrar la ventana de turtle
+        turtle.mainloop()
+        turtle.done()
+        turtle.bye()   
+        turtle.exit()
             
     
     game()
-
-setup_mult()
