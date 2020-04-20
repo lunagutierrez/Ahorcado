@@ -218,7 +218,7 @@ ojo2(donatello)
 boca(donatello)
 lengua(donatello"""
 
-#Gane o pierda el juegador, al final del juego tiene que cerrarse la ventana para evitar errores
+#Gane o pierda el juegador, al final del juego tiene que cerrarse para evitar errores
 """turtle.mainloop()
 turtle.done()
 turtle.bye()"""
