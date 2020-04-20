@@ -5,7 +5,6 @@ Created on Sun Mar 29 18:00:26 2020
 @author: lunag
 """
 #importar las librerías necesarias
-
 import time
 import palabras
 import random 
@@ -24,7 +23,7 @@ def setup_ind():
 #esperar un segundo
     time.sleep(1)
 
-    #lev = int(input("Escoge un nivel de dificultad entre 3 y 10: "))  
+    #lev = int(input("Escoge un nivel de dificultad entre 3 y 6: "))  
     def level():
         while True:
             lev = int(input("Escoge un nivel de dificultad entre 3 y 10: "))  
@@ -115,8 +114,8 @@ def setup_ind():
         failed = 0             
 
     # para cada letra en la palabra
-        for char in word:      
-
+        for char in word: 
+        
     # mirar si la letra esta en lo adivinado
             if char in guesses:    
     
@@ -129,7 +128,8 @@ def setup_ind():
                 print ("_")     
        
         # e incrementar el numero de fallas
-                failed += 1    
+                failed += 1
+        
 
     # si no hay fallas
 
@@ -202,8 +202,3 @@ def setup_ind():
                 turtle.done()
                 turtle.bye()
                 
-                
-
-#BEGINNING-OF-EXECUTION
-setup_ind()
-#END-OF-EXECUTION
