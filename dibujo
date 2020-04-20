@@ -187,7 +187,10 @@ def lengua(t):
     t.forward(12)
     
 #BEGINNING-OF-EXECUTION
-#La siguiente ejecución debe incluirse en el código antes de comenzar a ejecutar las funciones definidas en dibujo
+
+#La siguiente ejecución muestra el órden en que debe seguirse la secuencia de partes del cuerpo del hombre para que el dibujo funcione
+
+#Primero, debe crearse la pantalla dónde se realizará el dibujo
 """turtle.setup(500,500)
 wn=turtle.Screen()
 wn.bgcolor("white")
@@ -197,7 +200,7 @@ donatello.color("black")
 donatello.pensize(3)
 donatello.hideturtle()"""
 
-#La siguiente ejecución muestra el órden en que debe seguirse la secuencia de partes del cuerpo del hombre para que el dibujo funcione
+#Luego si debe comenzar a dibujar las partes del hombre ahorcado, una por una, en este orden, cada vez que se cometa un error
 """horca(donatello)
 cabeza(donatello)
 tronco(donatello)
@@ -213,9 +216,10 @@ cabello(donatello)
 ojo1(donatello)
 ojo2(donatello)
 boca(donatello)
-lengua(donatello)
+lengua(donatello"""
 
-turtle.mainloop()
+#Gane o pierda el juegador, al final del juego tiene que cerrarse la ventana para evitar errores
+"""turtle.mainloop()
 turtle.done()
 turtle.bye()"""
 #END-OF-EXECUTION
