@@ -81,7 +81,7 @@ def setup_ind():
             
     time.sleep(0.5)
 
-    turnos = 16
+    turnos = 6
     print("Tienes", turnos, "intentos")
 
     time.sleep(0.5)
@@ -168,45 +168,36 @@ def setup_ind():
             
     #Dibujo del ahorcado según los intentos que quedan
     
-            if turnos == 15:
+            if turnos == 5:
                 dibujo.horca(donatello)
-            elif turnos == 14:
                 dibujo.cabeza(donatello)
-            elif turnos == 13:
-                dibujo.tronco(donatello)
-            elif turnos == 12:
-                dibujo.pierna1(donatello)
-            elif turnos == 11:
-                dibujo.pie1(donatello)
-            elif turnos == 10:
-                dibujo.pierna2(donatello)
-            elif turnos == 9:
-                dibujo.pie2(donatello)
-            elif turnos == 8:
-                dibujo.brazo1(donatello)
-            elif turnos == 7:
-                dibujo.mano1(donatello)
-            elif turnos == 6:
-                dibujo.brazo2(donatello)
-            elif turnos == 5:
-                dibujo.mano2(donatello)
             elif turnos == 4:
-                dibujo.cabello(donatello)
+                dibujo.tronco(donatello)
             elif turnos == 3:
-                dibujo.ojo1(donatello)
+                dibujo.pierna1(donatello)
+                dibujo.pie1(donatello)
             elif turnos == 2:
-                dibujo.ojo2(donatello)
+                dibujo.pierna2(donatello) 
+                dibujo.pie2(donatello)
             elif turnos == 1:
-                dibujo.boca(donatello)
+                dibujo.brazo1(donatello)
+                dibujo.mano1(donatello)
+                dibujo.brazo2(donatello)
+                dibujo.mano2(donatello)
+                
+            #Cuando el jugador pierde
+            
             elif turnos == 0:
+                dibujo.cabello(donatello)
+                dibujo.ojo1(donatello)
+                dibujo.ojo2(donatello)
+                dibujo.boca(donatello)
                 dibujo.lengua(donatello)
-                    
-        # Perdio!
+                
                 print ("¡Ahorcado!")
                 print("La palabra era " +word)
                 
          # Cerrar la ventana de turtle
-    
                 turtle.mainloop()
                 turtle.done()
                 turtle.bye()
