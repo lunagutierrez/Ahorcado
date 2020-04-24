@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Mar 29 18:00:26 2020
-
 @author: lunag
 """
 #importar las librerías necesarias
@@ -92,7 +91,7 @@ def setup_ind():
 
 #creamos la variable de guesses vacia 
     guesses = ''
-
+    
 #determinamos la palabra y el numero de turnos 
     word = level()
     
@@ -106,10 +105,11 @@ def setup_ind():
     donatello.pensize(3)
     donatello.hideturtle()
 # ciclo while 
-
+    
+    listGuesses = []
 #cmientras hayan turnos se ejecuta la funcion
     while turnos > 0:         
-
+        
     # contados desde 0
         failed = 0             
 
@@ -129,6 +129,7 @@ def setup_ind():
        
         # e incrementar el numero de fallas
                 failed += 1
+            
         
 
     # si no hay fallas
@@ -147,58 +148,74 @@ def setup_ind():
             break              
 
         print
-
+        
+        print("Estos son los caracteres que has adivinado hasta ahora: " + str(listGuesses))
     # adivine una letra
-        guess = input("Adivina una letra: ") 
+        guess = input("Adivina una letra: ").lower()
 
     # de guess a guesses
         guesses += guess                    
-
+        
+            
+        alreadyGuessed = False
+        for w in listGuesses:
+            if w == guess:
+                alreadyGuessed = True
+                break
+        if alreadyGuessed:
+            print("\n Ya adivinaste esta letra. Inténtalo de nuevo. \n")
+            continue
+        else:
+            listGuesses.append(guess)
+            
     # si guess no esta en palabra
         if guess not in word:  
- 
+                
+            if not guess.isalpha():
+                print("Debes adivinar una letra")
+            
+            if guess.isalpha():
      # turnos se disminuyen
-            turnos -= 1        
+                turnos -= 1        
  
     # imprima se equivoco
-            print ("Te equivocaste...")    
+                print ("Te equivocaste...")    
  
     # turnos que quedan
-            print ("Ahora tienes", + turnos, 'intentos')
+                print ("Ahora tienes", + turnos, 'intentos')
             
     #Dibujo del ahorcado según los intentos que quedan
     
-            if turnos == 5:
-                dibujo.horca(donatello)
-                dibujo.cabeza(donatello)
-            elif turnos == 4:
-                dibujo.tronco(donatello)
-            elif turnos == 3:
-                dibujo.pierna1(donatello)
-                dibujo.pie1(donatello)
-            elif turnos == 2:
-                dibujo.pierna2(donatello) 
-                dibujo.pie2(donatello)
-            elif turnos == 1:
-                dibujo.brazo1(donatello)
-                dibujo.mano1(donatello)
-                dibujo.brazo2(donatello)
-                dibujo.mano2(donatello)
+                if turnos == 5:
+                    dibujo.horca(donatello)
+                    dibujo.cabeza(donatello)
+                elif turnos == 4:
+                    dibujo.tronco(donatello)
+                elif turnos == 3:
+                    dibujo.pierna1(donatello)
+                    dibujo.pie1(donatello)
+                elif turnos == 2:
+                    dibujo.pierna2(donatello) 
+                    dibujo.pie2(donatello)
+                elif turnos == 1:
+                    dibujo.brazo1(donatello)
+                    dibujo.mano1(donatello)
+                    dibujo.brazo2(donatello)
+                    dibujo.mano2(donatello)
                 
             #Cuando el jugador pierde
             
-            elif turnos == 0:
-                dibujo.cabello(donatello)
-                dibujo.ojo1(donatello)
-                dibujo.ojo2(donatello)
-                dibujo.boca(donatello)
-                dibujo.lengua(donatello)
+                elif turnos == 0:
+                    dibujo.cabello(donatello)
+                    dibujo.ojo1(donatello)
+                    dibujo.ojo2(donatello)
+                    dibujo.boca(donatello)
+                    dibujo.lengua(donatello)
                 
-                print ("¡Ahorcado!")
-                print("La palabra era " +word)
+                    print ("¡Ahorcado!")
+                    print("La palabra era " +word)
                 
          # Cerrar la ventana de turtle
-                turtle.mainloop()
-                turtle.done()
-                turtle.bye()
-                
+                    turtle.mainloop()
+                    turtle.done()
+                    turtle.bye()
