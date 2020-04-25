@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Apr  6 18:04:53 2020
-
 @author: lunag
 """
 
 import time
 import turtle
 import dibujo
+import winsound
 
 #import random
 
@@ -15,6 +15,7 @@ import dibujo
 def setup_mult():
     user1 = input("¿Nombre de usuario jugador 1? ")
     user2 = input("¿Nombre de usuario jugador 2? ")
+    
     print ("Hola, " + user1 + " y " + user2 + " Juguemos ahorcado!")
     
 
@@ -44,8 +45,10 @@ def setup_mult():
             except ValueError:
                 print('{0} no es un entero entre 3 y 10'.format(lev))
                 
-        print (user1 + " deja de mirar la pantalla mientras " + user2 + " digita la palabra que vas a adivinar")
         
+        print ("\n" + user1 + " deja de mirar la pantalla mientras " + user2 + " digita la palabra que vas a adivinar")
+
+       
         
         def palabra1():
             while True:  
@@ -60,17 +63,18 @@ def setup_mult():
                         break
                 except ValueError:
                     print('Lo digitado no es valido')
-                
+        
         word = palabra1()
         time.sleep(0.5)
         print('\n' * 60)
+        winsound.PlaySound("audioahorcado.wav", winsound.SND_ASYNC)
         turnos = 6
         print("Tienes", turnos, "intentos")
 
         time.sleep(0.5)
         print("Es hora de empezar el juego")
         time.sleep(0.5)
-
+        ta = time.process_time()
 #establecemos la palabra
 
 
@@ -81,7 +85,7 @@ def setup_mult():
         
 # ciclo while 
                
-
+        listGuesses = []
 #cmientras hayan turnos se ejecuta la funcion
         while turnos > 0:         
 
@@ -118,64 +122,78 @@ def setup_mult():
 
             print
 
+            print("Estos son los caracteres que has adivinado hasta ahora: " + str(listGuesses))
     # adivine una letra
-            guess = input("Adivina una letra: ") 
+            guess = input("Adivina una letra: ").lower()
 
 # de guess a guesses
             guesses += guess                    
-
+                      
+            alreadyGuessed = False
+            for w in listGuesses:
+                if w == guess:
+                    alreadyGuessed = True
+                    break
+            if alreadyGuessed:
+                print("\n Ya adivinaste esta letra. Inténtalo de nuevo. \n")
+                continue
+            else:
+                listGuesses.append(guess)
     # si guess no esta en palabra
             if guess not in word:  
+                if not guess.isalpha():
+                    print("Debes adivinar una letra")
  
+                if guess.isalpha():
      # turnos se disminuyen
-                turnos -= 1   
+                    turnos -= 1   
                
                 
  
     # imprima se equivoco
-                print ("Te equivocaste...")    
+                    print ("Te equivocaste...")    
  
     # turnos que quedan
-                print ("Ahora tienes", + turnos, 'intentos')
+                    print ("Ahora tienes", + turnos, 'intentos')
  
     # si se queda sin turnos
                  # dibujo según los turnos que quedan
-                if turnos == 5:
-                    dibujo.horca(donatello)
-                    dibujo.cabeza(donatello)
-                elif turnos == 4:
-                    dibujo.tronco(donatello)
-                elif turnos == 3:
-                    dibujo.pierna1(donatello)
-                    dibujo.pie1(donatello)
-                elif turnos == 2:
-                    dibujo.pierna2(donatello) 
-                    dibujo.pie2(donatello)
-                elif turnos == 1:
-                    dibujo.brazo1(donatello)
-                    dibujo.mano1(donatello)
-                    dibujo.brazo2(donatello)
-                    dibujo.mano2(donatello)
+                    if turnos == 5:
+                        dibujo.horca(donatello)
+                        dibujo.cabeza(donatello)
+                    elif turnos == 4:
+                        dibujo.tronco(donatello)
+                    elif turnos == 3:
+                        dibujo.pierna1(donatello)
+                        dibujo.pie1(donatello)
+                    elif turnos == 2:
+                        dibujo.pierna2(donatello) 
+                        dibujo.pie2(donatello)
+                    elif turnos == 1:
+                        dibujo.brazo1(donatello)
+                        dibujo.mano1(donatello)
+                        dibujo.brazo2(donatello)
+                        dibujo.mano2(donatello)
                 
             #Cuando el jugador pierde
             
-                elif turnos == 0:
-                    dibujo.cabello(donatello)
-                    dibujo.ojo1(donatello)
-                    dibujo.ojo2(donatello)
-                    dibujo.boca(donatello)
-                    dibujo.lengua(donatello)
+                    elif turnos == 0:
+                        dibujo.cabello(donatello)
+                        dibujo.ojo1(donatello)
+                        dibujo.ojo2(donatello)
+                        dibujo.boca(donatello)
+                        dibujo.lengua(donatello)
                 
-                    print ("¡Ahorcado!")
-                    print("La palabra era " +word)
-                    time.sleep(1)
+                        print ("¡Ahorcado!")
+                        print("La palabra era " +word)
+                        time.sleep(1)
                     
-                    break
+                        break
         # Perdio!
         
-            
+        tb = time.process_time() 
         puntaje1 = turnos * lev * 10
-    
+        t1 = tb - ta
     
         time.sleep(0.5)
         print('\n' * 60)
@@ -183,7 +201,7 @@ def setup_mult():
         print("Ahora " + user2 + " va a adivinar la palabra que escoja " + user1)
         print("")
         print (user2 + " deja de mirar la pantalla mientras " + user1 + " digita la palabra que vas a adivinar")
-
+        
    
         def palabra2():
             donatello.clear()
@@ -207,13 +225,14 @@ def setup_mult():
         word = palabra2()
         time.sleep(0.5)
         print('\n' * 60)
+        winsound.PlaySound("audioahorcado.wav", winsound.SND_ASYNC)
         turnos = 6
         print("Tienes", turnos, "intentos")
 
         time.sleep(0.5)
         print("Es hora de empezar el juego")
         time.sleep(0.5)
-
+        tc = time.process_time()
 #establecemos la palabra
 
 
@@ -223,7 +242,7 @@ def setup_mult():
         
         
 # ciclo while 
-
+        listGuesses = []
 #cmientras hayan turnos se ejecuta la funcion
         while turnos > 0:         
 
@@ -256,63 +275,85 @@ def setup_mult():
                 break
                       
   
-            
+            print("Estos son los caracteres que has adivinado hasta ahora: " + str(listGuesses))
     # adivine una letra
-            guess = input("Adivina una letra: ") 
+            guess = input("Adivina una letra: ").lower()
 
 # de guess a guesses
             guesses += guess                    
-
+                      
+            alreadyGuessed = False
+            for w in listGuesses:
+                if w == guess:
+                    alreadyGuessed = True
+                    break
+            if alreadyGuessed:
+                print("\n Ya adivinaste esta letra. Inténtalo de nuevo. \n")
+                continue
+            else:
+                listGuesses.append(guess)
+                
     # si guess no esta en palabra
-            if guess not in word:  
+            if guess not in word: 
+                if not guess.isalpha():
+                    print("Debes adivinar una letra")
  
+                if guess.isalpha():
      # turnos se disminuyen
-                turnos -= 1  
+                    turnos -= 1  
                   
     # imprima se equivoco
-                print ("Te equivocaste...")    
+                    print ("Te equivocaste...")    
  
     # turnos que quedan
-                print ("Ahora tienes", + turnos, 'intentos')
+                    print ("Ahora tienes", + turnos, 'intentos')
  
     # dibujo según los turnos que quedan
-                if turnos == 5:
-                    dibujo.horca(donatello)
-                    dibujo.cabeza(donatello)
-                elif turnos == 4:
-                    dibujo.tronco(donatello)
-                elif turnos == 3:
-                    dibujo.pierna1(donatello)
-                    dibujo.pie1(donatello)
-                elif turnos == 2:
-                    dibujo.pierna2(donatello) 
-                    dibujo.pie2(donatello)
-                elif turnos == 1:
-                    dibujo.brazo1(donatello)
-                    dibujo.mano1(donatello)
-                    dibujo.brazo2(donatello)
-                    dibujo.mano2(donatello)
+                    if turnos == 5:
+                        dibujo.horca(donatello)
+                        dibujo.cabeza(donatello)
+                    elif turnos == 4:
+                        dibujo.tronco(donatello)
+                    elif turnos == 3:
+                        dibujo.pierna1(donatello)
+                        dibujo.pie1(donatello)
+                    elif turnos == 2:
+                        dibujo.pierna2(donatello) 
+                        dibujo.pie2(donatello)
+                    elif turnos == 1:
+                        dibujo.brazo1(donatello)
+                        dibujo.mano1(donatello)
+                        dibujo.brazo2(donatello)
+                        dibujo.mano2(donatello)
                 
             #Cuando el jugador pierde
             
-                elif turnos == 0:
-                    dibujo.cabello(donatello)
-                    dibujo.ojo1(donatello)
-                    dibujo.ojo2(donatello)
-                    dibujo.boca(donatello)
-                    dibujo.lengua(donatello)
+                    elif turnos == 0:
+                        dibujo.cabello(donatello)
+                        dibujo.ojo1(donatello)
+                        dibujo.ojo2(donatello)
+                        dibujo.boca(donatello)
+                        dibujo.lengua(donatello)
                 
-                    print ("¡Ahorcado!")
-                    print("La palabra era " +word)
-                            
+                        print ("¡Ahorcado!")
+                        print("La palabra era " +word)
+        
+        td = time.process_time()                   
         puntaje2 = turnos * lev * 10
+        t2 = td - tc
              
         if puntaje1 < puntaje2:
            print(user2 + " ha ganado la partida con un puntaje de {0}".format(puntaje2),", mientras que " + user1 + " solo ha obtenido {0} puntos.".format(puntaje1))
         elif puntaje2 < puntaje1:
             print(user1 + " ha ganado la partida con un puntaje de {0}".format(puntaje1),", mientras que " + user2 + " solo ha obtenido {0} puntos.".format(puntaje2))
         else:
-            print ("Ha habido un empate, ambos jugadores han obtenido un puntaje de {0}".format(puntaje1))
+            print ("Ambos jugadores han obtenido un puntaje de {0}".format(puntaje1))
+            if t1 < t2:
+                print(user1 + " Ha ganado pues ha adivinado en un menor tiempo")
+            elif t2 < t1:
+                print(user2 + " Ha ganado pues ha adivinado en un menor tiempo")
+            else:
+                print("Ha habido un empate")
 # Cerrar la ventana de turtle
         turtle.mainloop()
         turtle.done()
@@ -321,3 +362,4 @@ def setup_mult():
             
     
     game()
+
