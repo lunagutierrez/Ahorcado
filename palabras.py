@@ -5,34 +5,7 @@ Created on Wed Apr  1 17:17:34 2020
 @author: lunag
 """
 
-import sys
-
-#Función que nos permite probar que cada palabra tenga la longitud asignada
-def comprobar(lenw,palx):
-    for i in palx:
-        if len(i)==lenw:
-            return True
-        else:
-            return False
-            break
-        
-def test(pasa):
-    lnum=sys._getframe(1).f_lineno
-    if pasa:
-        msg="Prueba en la línea {0} ok.".format(lnum)
-    else:
-        msg="Prueba en la línea {0} FALLÓ.".format(lnum)
-    print(msg)
-    
-def testsuite():
-    test(comprobar(3,pal3)==True)
-    test(comprobar(4,pal4)==True)
-    test(comprobar(5,pal5)==True)
-    test(comprobar(6,pal6)==True)
-    test(comprobar(7,pal7)==True)
-    test(comprobar(8,pal8)==True)
-    test(comprobar(9,pal9)==True)
-    test(comprobar(10,pal10)==True)
+import random
 
 #Listas de palabras por longitud
 
@@ -44,19 +17,61 @@ pal7=["hermosa","estudio","encanto","palabra","carisma","zapateo","caballo","beb
 pal8=["internet","labiales","sociales","biologia","viviparo","longitud","mariposa","nacional","colombia","creativo","embarazo","orquesta","manicura","vibrante","xilofono","incendio","pelicula","finanzas","economia","libertad","gaviotas","cerebelo","fraccion","infinito","libelula","amazonas","ciencias","subsidio","sintomas","degustar","telefono","almohada","hipnosis","misterio","suspenso","analisis","perfecto","claustro","estudiar","personas","pancreas","deportes","ahorcado","piramide","multitud"]
 pal9=["corolario","diafragma","antebrazo","sarampion","zanahoria","higienico","cuarentena","suculento","australia","enamorado","occidente","relampago","feminismo","eufemismo","prematuro","filosofia","prudencia","mitologia","dieciseis","provincia","enfermero","funciones","fortaleza","mapamundi","dimension","animales","fractales","dieciocho","exactitud","simpatico","inquietud","cincuenta","serenidad","paciencia","inclusion","depresion","romantico","miercoles","crescendo","confesion","barcelona","mordedura","audifonos","bendicion","dramatico"]
 pal10=["videojuego","matematica","computador","asociacion","hemisferio","granadilla","hipotalamo","arquitecto","calendario","tecnologia","hipopotamo","crucigrama","aritmetica","matrimonio","salchichon","transexual","psicologia","diversidad","tartamudeo","comentario","abecedario","superheroe","vacacional","uniformado","uzbekistan","jamaiquino","judicatura","obligacion","oficinista","defectuoso","cumpleaños","disciplina","plastilina","natureleza","mendicidad","zarigueyas","adaptacion","campesinos","lentejuela","despiadado","etnografia","transmitir","crepusculo","hospitales","sarpullido"]
- 
-#BEGINNING-OF-EXECUTION
 
-#Imprime el número de palabras de cada lista, nos permitió asegurarnos de que para cada longitud habían 45 palabras
-"""print (len(pal3))
-print (len(pal4))
-print (len(pal5))
-print (len(pal6))
-print (len(pal7))
-print (len(pal8))
-print (len(pal9))
-print (len(pal10))"""
+#Clase que divide los niveles del juego según la longitud de las palabras
 
-#Hace la prueba definida al principio
-"""testsuite()"""
-#END-OF-EXECUTION
+class Nivel:
+    import random
+    def __str__():
+        while True:
+            lenw=int(input("Escoge un nivel de dificultad entre 3 y 10: "))
+            if lenw == 3:
+                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
+                print ("Ya puedes comenzar a adivinar")
+                return random.choice(pal3)
+                break
+                        
+            elif lenw == 4:
+                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
+                print ("Ya puedes comenzar a adivinar")
+                return random.choice(pal4)
+                break
+                    
+            elif lenw == 5:
+                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
+                print ("Ya puedes comenzar a adivinar")
+                return random.choice(pal5)
+                break
+                        
+            elif lenw == 6:
+                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
+                print ("Ya puedes comenzar a adivinar")
+                return random.choice(pal6)
+                break
+                        
+            elif lenw == 7:
+                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
+                print ("Ya puedes comenzar a adivinar")
+                return random.choice(pal7)
+                break
+                        
+            elif lenw ==8:
+                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
+                print ("Ya puedes comenzar a adivinar")
+                return random.choice(pal8)
+                break            
+                    
+            elif lenw ==9:
+                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
+                print ("Ya puedes comenzar a adivinar")
+                return random.choice(pal9)
+                break
+                    
+            elif lenw ==10:
+                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
+                print ("Ya puedes comenzar a adivinar")
+                return random.choice(pal10)
+                break
+                
+            else:
+                print('{0} no es un entero entre 3 y 10'.format(lenw))
