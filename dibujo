@@ -1,224 +1,240 @@
+
 import turtle
+import time
 
-def horca(t):
-    t.pensize
-    t.penup()
-    t.goto(-150,-100)
-    t.pendown()
-    for i in range(3):
-        t.forward(100)
-        t.left(120)
-    t.forward(50)
-    t.left(90)
-    t.forward(400)
-    t.right(90)
-    t.forward(90)
-    t.right(90)
-    t.pensize(2)
-    t.forward(35)
+class Tortuga:
+            
+    def Ventana(t):
+        turtle.setup(800,800,0,0)
+        wn=turtle.Screen()
+        wn.bgcolor("white")
+        wn.title("Ahorcado")
+        t.color("black")
+        t.pensize(3)
+        t.hideturtle()
 
-def cabeza(t):
-    t.circle(30)
-
-def tronco(t):
-    t.right(7)
-    t.forward(120)
-
-def pierna1(t):
-    t.left(35)
-    t.forward(65)
-    t.right(35)
-    t.forward(45)
-
-def pie1(t):
-    t.right(40)
-    for i in range(2):
-        t.forward(10)
+    def horca(t):
+        t.pensize
+        t.penup()
+        t.goto(-150,-100)
+        t.pendown()
+        for i in range(3):
+            t.forward(100)
+            t.left(120)
+        t.forward(50)
         t.left(90)
-        t.forward(18)
-        t.left(90)
-    t.left(40)
-
-def pierna2(t):
-    t.penup()
-    t.left(180)
-    t.forward(45)
-    t.left(35)
-    t.forward(65)
-    t.right(160)
-    t.pendown()
-    t.forward(65)
-    t.right(35)
-    t.forward(45)
-
-def pie2(t):
-    t.right(40)
-    for i in range(2):
-        t.forward(10)
-        t.left(90)
-        t.forward(18)
-        t.left(90)
-    t.left(220)
-    t.penup()
-    t.forward(45)
-    t.left(35)
-    t.forward(65)
-    t.right(55)
-    t.forward(90)
-    t.pendown()
-
-def brazo1(t):
-    t.left(150)
-    t.forward(55)
-    t.left(45)
-    t.forward(35)
+        t.forward(400)
+        t.right(90)
+        t.forward(90)
+        t.right(90)
+        t.pensize(2)
+        t.forward(35)
     
-def mano1(t):
-    t.right(90)
-    for i in range(10):
-        t.forward(1)
-        t.left(10)
-    t.left(75)
-    t.forward(7)
-    t.right(95)
-    for i in range(20):
-        t.forward(1)
-        t.left(10)
-    t.forward(10)
-    t.left(80)
-    t.forward(11)
-    t.right(90)
-    t.penup()
-    t.forward(35)
-    t.right(45)
-    t.forward(55)
-    t.pendown()
+    def cabeza(t):
+        t.circle(30)
     
-def brazo2(t):
-    t.right(140)
-    t.forward(55)
-    t.left(45)
-    t.forward(35)
-
-def mano2(t):
-    t.right(90)
-    for i in range(10):
-        t.forward(1)
-        t.left(10)
-    t.left(75)
-    t.forward(7)
-    t.right(95)
-    for i in range(20):
-        t.forward(1)
-        t.left(10)
-    t.forward(10)
-    t.left(80)
-    t.forward(11)
-    t.right(90)
-    t.penup()
-    t.forward(35)
-    t.right(45)
-    t.forward(55)
+    def tronco(t):
+        t.right(7)
+        t.forward(120)
     
-def cabello(t):
-    t.speed(0)
-    t.right(10)
-    t.forward(35)
-    t.right(90)
-    t.forward(3)
-    t.pendown()
-    t.left(180)
-    for i in range(3):
-        for i in range(10):
+    def pierna1(t):
+        t.left(35)
+        t.forward(65)
+        t.right(35)
+        t.forward(45)
+    
+    def pie1(t):
+        t.right(40)
+        for i in range(2):
             t.forward(10)
-            t.right(170)
-            t.forward(11)
-            t.left(166.5)
-    t.speed(5)
-
-def ojo1(t):
-    t.penup()
-    t.right(180)
-    t.forward(18)
-    t.right(45)
-    t.pendown()
-    t.forward(14.14)
-    t.right(135)
-    t.penup()
-    t.forward(10)
-    t.right(135)
-    t.pendown()
-    t.forward(14.14)
-    t.right(135)
-
-def ojo2(t):
-    t.penup()
-    t.forward(20)
-    t.right(45)
-    t.pendown()
-    t.forward(14.14)
-    t.right(135)
-    t.penup()
-    t.forward(10)
-    t.right(135)
-    t.pendown()
-    t.forward(14.14)
-    t.right(135)
+            t.left(90)
+            t.forward(18)
+            t.left(90)
+        t.left(40)
     
-def boca(t):
-    t.right(180)
-    t.penup()
-    t.forward(10)
-    t.left(90)
-    t.pendown()
-    t.forward(30)
-
-def lengua(t):
-    t.left(180)
-    t.forward(13)
-    t.left(90)
-    t.forward(6)
-    t.circle(6,180)
-    t.forward(6)
-    t.left(90)
-    t.forward(6)
-    t.left(90)
-    t.forward(12)
+    def pierna2(t):
+        t.penup()
+        t.left(180)
+        t.forward(45)
+        t.left(35)
+        t.forward(65)
+        t.right(160)
+        t.pendown()
+        t.forward(65)
+        t.right(35)
+        t.forward(45)
     
-#BEGINNING-OF-EXECUTION
-
-#La siguiente ejecución muestra el órden en que debe seguirse la secuencia de partes del cuerpo del hombre para que el dibujo funcione
-
-#Primero, debe crearse la pantalla dónde se realizará el dibujo
-"""turtle.setup(500,500)
-wn=turtle.Screen()
-wn.bgcolor("white")
-wn.title("Ahorcado")
-donatello=turtle.Turtle()
-donatello.color("black")
-donatello.pensize(3)
-donatello.hideturtle()"""
-
-#Luego si debe comenzar a dibujar las partes del hombre ahorcado, una por una, en este orden, cada vez que se cometa un error
-"""horca(donatello)
-cabeza(donatello)
-tronco(donatello)
-pierna1(donatello)
-pie1(donatello)
-pierna2(donatello)
-pie2(donatello)
-brazo1(donatello)
-mano1(donatello)
-brazo2(donatello)
-mano2(donatello)
-cabello(donatello)
-ojo1(donatello)
-ojo2(donatello)
-boca(donatello)
-lengua(donatello)"""
-
-#Gane o pierda el juegador, al final del juego tiene que cerrarse la ventana para evitar errores
-"""turtle.mainloop()
-turtle.done()
-turtle.bye()"""
-#END-OF-EXECUTION
+    def pie2(t):
+        t.right(40)
+        for i in range(2):
+            t.forward(10)
+            t.left(90)
+            t.forward(18)
+            t.left(90)
+        t.left(220)
+        t.penup()
+        t.forward(45)
+        t.left(35)
+        t.forward(65)
+        t.right(55)
+        t.forward(90)
+        t.pendown()
+    
+    def brazo1(t):
+        t.left(150)
+        t.forward(55)
+        t.left(45)
+        t.forward(35)
+        
+    def mano1(t):
+        t.right(90)
+        for i in range(10):
+            t.forward(1)
+            t.left(10)
+        t.left(75)
+        t.forward(7)
+        t.right(95)
+        for i in range(20):
+            t.forward(1)
+            t.left(10)
+        t.forward(10)
+        t.left(80)
+        t.forward(11)
+        t.right(90)
+        t.penup()
+        t.forward(35)
+        t.right(45)
+        t.forward(55)
+        t.pendown()
+        
+    def brazo2(t):
+        t.right(140)
+        t.forward(55)
+        t.left(45)
+        t.forward(35)
+    
+    def mano2(t):
+        t.right(90)
+        for i in range(10):
+            t.forward(1)
+            t.left(10)
+        t.left(75)
+        t.forward(7)
+        t.right(95)
+        for i in range(20):
+            t.forward(1)
+            t.left(10)
+        t.forward(10)
+        t.left(80)
+        t.forward(11)
+        t.right(90)
+        t.penup()
+        t.forward(35)
+        t.right(45)
+        t.forward(55)
+        
+    def cabello(t):
+        t.speed(0)
+        t.right(10)
+        t.forward(35)
+        t.right(90)
+        t.forward(3)
+        t.pendown()
+        t.left(180)
+        for i in range(3):
+            for i in range(10):
+                t.forward(10)
+                t.right(170)
+                t.forward(11)
+                t.left(166.5)
+        t.speed(5)
+    
+    def ojo1(t):
+        t.penup()
+        t.right(180)
+        t.forward(18)
+        t.right(45)
+        t.pendown()
+        t.forward(14.14)
+        t.right(135)
+        t.penup()
+        t.forward(10)
+        t.right(135)
+        t.pendown()
+        t.forward(14.14)
+        t.right(135)
+    
+    def ojo2(t):
+        t.penup()
+        t.forward(20)
+        t.right(45)
+        t.pendown()
+        t.forward(14.14)
+        t.right(135)
+        t.penup()
+        t.forward(10)
+        t.right(135)
+        t.pendown()
+        t.forward(14.14)
+        t.right(135)
+        
+    def boca(t):
+        t.right(180)
+        t.penup()
+        t.forward(10)
+        t.left(90)
+        t.pendown()
+        t.forward(30)
+    
+    def lengua(t):
+        t.left(180)
+        t.forward(13)
+        t.left(90)
+        t.forward(6)
+        t.circle(6,180)
+        t.forward(6)
+        t.left(90)
+        t.forward(6)
+        t.left(90)
+        t.forward(12)
+    
+    def borrar(t):
+        t.clear()
+        t.penup()
+        t.home()
+        t.pendown()
+        
+    def fin():
+        turtle.mainloop()
+        turtle.done()
+        turtle.bye()
+        
+        
+class Mistakes(Tortuga):
+    
+    def draw(t,n):
+        if n == 5:
+            Tortuga.horca(t)
+            Tortuga.cabeza(t)
+        elif n == 4:
+            Tortuga.tronco(t)
+        elif n == 3:
+            Tortuga.pierna1(t)
+            Tortuga.pie1(t)
+        elif n == 2:
+            Tortuga.pierna2(t) 
+            Tortuga.pie2(t)
+        elif n == 1:
+            Tortuga.brazo1(t)
+            Tortuga.mano1(t)
+            Tortuga.brazo2(t)
+            Tortuga.mano2(t)
+        #Cuando el jugador pierde    
+        elif n == 0:
+            Tortuga.cabello(t)
+            Tortuga.ojo1(t)
+            Tortuga.ojo2(t)
+            Tortuga.boca(t)
+            Tortuga.lengua(t)
+            time.sleep(8)
+            Tortuga.borrar(t)
