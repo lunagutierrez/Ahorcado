@@ -7,17 +7,20 @@ Created on Wed Apr  1 18:21:29 2020
 import ahorcadoind
 import ahorcadomult
 
+
+print("\nBienvenido al Juego de Ahorcado")
+for i in range(4):
+    print("")
+    
+    
 def juego():
-    print("\nBienvenido al Juego de Ahorcado")
-    for i in range(4):
-        print("")
-        
     Main = True 
     while Main == True:
         print("""Menu principal:
             [1] Jugar
             [2] Salir""")
         mainin = input()
+        
         if mainin == "1":
             print("""¿En qué modalidad de juego te gustaría jugar?:
     [1] Individual
@@ -26,10 +29,8 @@ def juego():
             version = input()
             if version == "1":
                 ahorcadoind.setup_ind()
-                break
             elif version == "2":
                 ahorcadomult.setup_mult()
-                break
             elif version == "3":
                 continue
             else:
@@ -38,6 +39,5 @@ def juego():
             Main = False
         else:
             print("Seleccione una opción válida.")
-#BOE           
+            
 juego()
-#EOE
