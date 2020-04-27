@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Apr  1 18:21:29 2020
-
 @author: lunag
 """
 
@@ -13,19 +12,32 @@ def juego():
     for i in range(4):
         print("")
         
-    while True:
-        version = int(input("Individual [1] o Multijugador? [2]  \n"))
-        if version == 1:
-            ahorcadoind.setup_ind()
-            break
-        elif version == 2:
-            ahorcadomult.setup_mult()
-            break
+    Main = True 
+    while Main == True:
+        print("""Menu principal:
+            [1] Jugar
+            [2] Salir""")
+        mainin = input()
+        if mainin == "1":
+            print("""¿En qué modalidad de juego te gustaría jugar?:
+    [1] Individual
+    [2] Multijugador
+    [3] Regresar al menu principal""")
+            version = input()
+            if version == "1":
+                ahorcadoind.setup_ind()
+                break
+            elif version == "2":
+                ahorcadomult.setup_mult()
+                break
+            elif version == "3":
+                continue
+            else:
+                print("Por favor seleccione una opción válida")
+        elif mainin == "2":
+            Main = False
         else:
-            print("Por favor, elige 1 o 2")
-        
-        
-
-#BEGINNING-OF-EXECUTION
+            print("Seleccione una opción válida.")
+#BOE           
 juego()
-#END-OF-EXECUTION
+#EOE
