@@ -8,6 +8,23 @@ import time
 import turtle
 import dibujo
 import winsound
+import ahorcadoind
+
+class palabras:
+    def palabra(lev):
+            while True:  
+                word = input("Escribe una palabra en minusula de la longitud del nivel de dificultad escogido ")
+                try:
+                    if not word.isalpha():
+                        print("Los caracteres de tu palabra solo pueden ser letras.")
+                    elif lev != len(word):
+                        print("Tu palabra debe ser de la longitud del nivel de dificultad escogido")
+                    else:
+                        return word
+                        break
+                except ValueError:
+                    print('Lo digitado no es valido')
+    
 
 #import random
 
@@ -23,17 +40,10 @@ def setup_mult():
 #esperar un segundo
     time.sleep(1)
     
-   
-        
+           
     def game():
-        turtle.setup(800,800,0,0)
-        wn=turtle.Screen()
-        wn.bgcolor("white")
-        wn.title("Ahorcado")
-        donatello=turtle.Turtle()
-        donatello.color("black")
-        donatello.pensize(3)
-        donatello.hideturtle()
+        t=turtle.Turtle()
+        dibujo.Tortuga.Ventana(t)
         while True: 
             lev = int(input("Escojan un nivel de dificultad entre 3 y 10: "))
             try:
@@ -46,25 +56,9 @@ def setup_mult():
                 print('{0} no es un entero entre 3 y 10'.format(lev))
                 
         
-        print ("\n" + user1 + " deja de mirar la pantalla mientras " + user2 + " digita la palabra que vas a adivinar")
-
-       
+        print ("\n" + user1 + " deja de mirar la pantalla mientras " + user2 + " digita la palabra que vas a adivinar")   
         
-        def palabra1():
-            while True:  
-                word = input("Escribe una palabra en minusula de la longitud del nivel de dificultad escogido ")
-                try:
-                    if not word.isalpha():
-                        print("Los caracteres de tu palabra solo pueden ser letras.")
-                    elif lev != len(word):
-                        print("Tu palabra debe ser de la longitud del nivel de dificultad escogido")
-                    else:
-                        return word
-                        break
-                except ValueError:
-                    print('Lo digitado no es valido')
-        
-        word = palabra1()
+        word = palabras.palabra(lev)
         time.sleep(0.5)
         print('\n' * 60)
         winsound.PlaySound("audioahorcado.wav", winsound.SND_ASYNC)
@@ -75,120 +69,9 @@ def setup_mult():
         print("Es hora de empezar el juego")
         time.sleep(0.5)
         ta = time.process_time()
-#establecemos la palabra
 
-
-#creamos la variable de guesses vacia 
-        guesses = ''
+        ahorcadoind.Adivinar.desarrollo(turnos,word)
         
-#determinamos la palabra y el numero de turnos 
-        
-# ciclo while 
-               
-        listGuesses = []
-#cmientras hayan turnos se ejecuta la funcion
-        while turnos > 0:         
-
-    # contados desde 0
-            failed = 0             
-            
-    # para cada letra en la palabra
-            for char in word:      
-
-    # mirar si la letra esta en lo adivinado
-                if char in guesses:    
-    
-        # imprimir el caracter
-                    print (char)    
-
-                else:
-    
-        # si no imprimir -
-                    print ("_")     
-       
-        # e incrementar el numero de fallas
-                    failed += 1 
-                    
-
-    # si no hay fallas
-
-    # Gano!
-            if failed == 0:        
-                print ("¡Adivinaste!")  
-                time.sleep(1)
-
-    # salir
-                break              
-
-            print
-
-            print("Estos son los caracteres que has adivinado hasta ahora: " + str(listGuesses))
-    # adivine una letra
-            guess = input("Adivina una letra: ").lower()
-
-# de guess a guesses
-            guesses += guess                    
-                      
-            alreadyGuessed = False
-            for w in listGuesses:
-                if w == guess:
-                    alreadyGuessed = True
-                    break
-            if alreadyGuessed:
-                print("\n Ya adivinaste esta letra. Inténtalo de nuevo. \n")
-                continue
-            else:
-                listGuesses.append(guess)
-    # si guess no esta en palabra
-            if guess not in word:  
-                if not guess.isalpha():
-                    print("Debes adivinar una letra")
- 
-                if guess.isalpha():
-     # turnos se disminuyen
-                    turnos -= 1   
-               
-                
- 
-    # imprima se equivoco
-                    print ("Te equivocaste...")    
- 
-    # turnos que quedan
-                    print ("Ahora tienes", + turnos, 'intentos')
- 
-    # si se queda sin turnos
-                 # dibujo según los turnos que quedan
-                    if turnos == 5:
-                        dibujo.horca(donatello)
-                        dibujo.cabeza(donatello)
-                    elif turnos == 4:
-                        dibujo.tronco(donatello)
-                    elif turnos == 3:
-                        dibujo.pierna1(donatello)
-                        dibujo.pie1(donatello)
-                    elif turnos == 2:
-                        dibujo.pierna2(donatello) 
-                        dibujo.pie2(donatello)
-                    elif turnos == 1:
-                        dibujo.brazo1(donatello)
-                        dibujo.mano1(donatello)
-                        dibujo.brazo2(donatello)
-                        dibujo.mano2(donatello)
-                
-            #Cuando el jugador pierde
-            
-                    elif turnos == 0:
-                        dibujo.cabello(donatello)
-                        dibujo.ojo1(donatello)
-                        dibujo.ojo2(donatello)
-                        dibujo.boca(donatello)
-                        dibujo.lengua(donatello)
-                
-                        print ("¡Ahorcado!")
-                        print("La palabra era " +word)
-                        time.sleep(1)
-                    
-                        break
         # Perdio!
         
         tb = time.process_time() 
@@ -202,27 +85,9 @@ def setup_mult():
         print("")
         print (user2 + " deja de mirar la pantalla mientras " + user1 + " digita la palabra que vas a adivinar")
         
-   
-        def palabra2():
-            donatello.clear()
-            donatello.penup()
-            donatello.home()
-            donatello.pendown()
-            while True:  
-                word = input("escribe una palabra en minusula de la longitud del nivel de dificultad escogido ")
-                try:
-                    if not word.isalpha():
-                        print("Los caracteres de tu palabra solo pueden ser letras.")
-                    elif lev != len(word):
-                        print("Tu palabra debe ser de la longitud del nivel de dificultad escogido")
-                    else:
-                        return word
-                        break
-                except ValueError:
-                    print('Lo digitado no es valido')
-
         
-        word = palabra2()
+
+        word = palabras.palabra(lev)
         time.sleep(0.5)
         print('\n' * 60)
         winsound.PlaySound("audioahorcado.wav", winsound.SND_ASYNC)
@@ -234,112 +99,12 @@ def setup_mult():
         time.sleep(0.5)
         tc = time.process_time()
 #establecemos la palabra
-
-
-#creamos la variable de guesses vacia 
-        guesses = ''
-#determinamos la palabra y el numero de turnos 
         
         
-# ciclo while 
-        listGuesses = []
-#cmientras hayan turnos se ejecuta la funcion
-        while turnos > 0:         
-
-    # contados desde 0
-            failed = 0             
-            
-    # para cada letra en la palabra
-            for char in word:      
-
-    # mirar si la letra esta en lo adivinado
-                if char in guesses:    
-    
-        # imprimir el caracter
-                    print (char)    
-
-                else:
-    
-        # si no imprimir -
-                    print ("_")     
-       
-        # e incrementar el numero de fallas
-                    failed += 1 
-                    
-    # si no hay fallas
-    
-            if failed == 0:       
-            
-    #Ganó   
-                print ("¡Adivinaste!")  
-                break
-                      
-  
-            print("Estos son los caracteres que has adivinado hasta ahora: " + str(listGuesses))
-    # adivine una letra
-            guess = input("Adivina una letra: ").lower()
-
-# de guess a guesses
-            guesses += guess                    
-                      
-            alreadyGuessed = False
-            for w in listGuesses:
-                if w == guess:
-                    alreadyGuessed = True
-                    break
-            if alreadyGuessed:
-                print("\n Ya adivinaste esta letra. Inténtalo de nuevo. \n")
-                continue
-            else:
-                listGuesses.append(guess)
-                
-    # si guess no esta en palabra
-            if guess not in word: 
-                if not guess.isalpha():
-                    print("Debes adivinar una letra")
- 
-                if guess.isalpha():
-     # turnos se disminuyen
-                    turnos -= 1  
-                  
-    # imprima se equivoco
-                    print ("Te equivocaste...")    
- 
-    # turnos que quedan
-                    print ("Ahora tienes", + turnos, 'intentos')
- 
-    # dibujo según los turnos que quedan
-                    if turnos == 5:
-                        dibujo.horca(donatello)
-                        dibujo.cabeza(donatello)
-                    elif turnos == 4:
-                        dibujo.tronco(donatello)
-                    elif turnos == 3:
-                        dibujo.pierna1(donatello)
-                        dibujo.pie1(donatello)
-                    elif turnos == 2:
-                        dibujo.pierna2(donatello) 
-                        dibujo.pie2(donatello)
-                    elif turnos == 1:
-                        dibujo.brazo1(donatello)
-                        dibujo.mano1(donatello)
-                        dibujo.brazo2(donatello)
-                        dibujo.mano2(donatello)
-                
-            #Cuando el jugador pierde
-            
-                    elif turnos == 0:
-                        dibujo.cabello(donatello)
-                        dibujo.ojo1(donatello)
-                        dibujo.ojo2(donatello)
-                        dibujo.boca(donatello)
-                        dibujo.lengua(donatello)
-                
-                        print ("¡Ahorcado!")
-                        print("La palabra era " +word)
+        ahorcadoind.Adivinar.desarrollo(turnos,word)
         
-        td = time.process_time()                   
-        puntaje2 = turnos * lev * 10
+        td = time.process_time()     
+        puntaje2=turnos*lev*10              
         t2 = td - tc
              
         if puntaje1 < puntaje2:
@@ -355,11 +120,7 @@ def setup_mult():
             else:
                 print("Ha habido un empate")
 # Cerrar la ventana de turtle
-        turtle.mainloop()
-        turtle.done()
-        turtle.bye()   
-        turtle.exit()
-            
+        dibujo.Tortuga.fin()           
     
     game()
 
