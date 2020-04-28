@@ -5,11 +5,12 @@ import time
 class Tortuga:
             
     def Ventana(t):
-        turtle.setup(800,800,0,0)
+        turtle.setup(400,800,0,0)
         wn=turtle.Screen()
-        wn.bgcolor("white")
+        wn.bgcolor("black")
         wn.title("Ahorcado")
-        t.color("black")
+        t.color("white")
+        t.pencolor("white")
         t.pensize(3)
         t.hideturtle()
 
@@ -238,3 +239,4 @@ class Mistakes(Tortuga):
             Tortuga.lengua(t)
             time.sleep(8)
             Tortuga.borrar(t)
+    
