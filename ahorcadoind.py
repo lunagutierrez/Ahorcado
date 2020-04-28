@@ -8,6 +8,7 @@ import time
 import palabras
 import turtle
 import dibujo
+import sys
 
 class Adivinar:
     
@@ -29,12 +30,12 @@ class Adivinar:
                     if char in guesses:    
             
                 # imprimir el caracter
-                        print (char)    
+                        sys.stdout.write(char )    
         
                     else:
             
                 # si no imprimir -
-                        print ("_")     
+                        sys.stdout.write("_ ")     
                
                 # e incrementar el numero de fallas
                         failed += 1
@@ -47,7 +48,7 @@ class Adivinar:
                     break
             # Cerrar la ventana de turtle
             # salir
-                
+                print(" ")
                 print("Estos son los caracteres que has adivinado hasta ahora: " + str(listGuesses))
             # adivine una letra
                 guess = input("Adivina una letra: ").lower()
