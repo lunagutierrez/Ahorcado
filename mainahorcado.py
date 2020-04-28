@@ -8,20 +8,20 @@ import ahorcadoind
 import ahorcadomult
 
 
-print("\nBienvenido al Juego de Ahorcado")
+print("\nBienvenido al Juego de Ahorcado") #Bienvenida al juego
 for i in range(4):
     print("")
     
     
 def juego():
-    Main = True 
-    while Main == True:
+    Main = True #partimos de true por default
+    while Main == True: #así al correr el programa siempre se abre el menu ppal
         print("""Menu principal:
             [1] Jugar
             [2] Salir""")
         mainin = input()
         
-        if mainin == "1":
+        if mainin == "1": #se muestran las modalidades de juego disponibles o se puede regresar al menu ppal
             print("""¿En qué modalidad de juego te gustaría jugar?:
     [1] Individual
     [2] Multijugador
@@ -36,7 +36,7 @@ def juego():
             else:
                 print("Por favor seleccione una opción válida")
         elif mainin == "2":
-            Main = False
+            Main = False #se cierra el menu ppal y se termina el programa
         else:
             print("Seleccione una opción válida.")
             
