@@ -3,12 +3,10 @@
 Created on Sun Mar 29 18:00:26 2020
 @author: lunag
 """
-#importar las librerías necesarias
 import time
 import palabras
 import turtle
 import dibujo
-import sys
 
 class Adivinar:
     
@@ -18,11 +16,12 @@ class Adivinar:
         dibujo.Tortuga.Ventana(t)
         guesses = ''
         listGuesses = []
+        
         while turnos > 0:         
                 
             # contados desde 0
                 failed = 0             
-        
+                print()
             # para cada letra en la palabra
                 for char in word: 
                 
@@ -30,25 +29,27 @@ class Adivinar:
                     if char in guesses:    
             
                 # imprimir el caracter
-                        sys.stdout.write(char )    
+                        print (char, end=" ")    
         
                     else:
             
                 # si no imprimir -
-                        sys.stdout.write("_ ")     
+                        print ("_" , end= " ")     
                
                 # e incrementar el numero de fallas
                         failed += 1
         
             # si no hay fallas
-        
+                
             # Gano!
-                if failed == 0:        
+                if failed == 0:   
+                    print("")
                     print ("¡Ganáste!") 
+                    time.sleep(3)
                     break
             # Cerrar la ventana de turtle
             # salir
-                print(" ")
+                print("")
                 print("Estos son los caracteres que has adivinado hasta ahora: " + str(listGuesses))
             # adivine una letra
                 guess = input("Adivina una letra: ").lower()
@@ -86,12 +87,16 @@ class Adivinar:
                     
             #Dibujo del ahorcado según los intentos que quedan
                         dibujo.Mistakes.draw(t,turnos)
-                    #Cuando el jugador pierde
-                    
-        print ("¡Ahorcado!")
-        print("La palabra era " +word)    
+                        
+            #Cuando el jugador pierde
+                        
+                        if turnos ==0:
+                             print ("¡Ahorcado!")
+                             print("La palabra era " +word)   
         
+        dibujo.Tortuga.borrar(t)
         return turnos
+        
 
 
 #Bienvenida
@@ -114,4 +119,10 @@ def setup_ind():
 #establecemos la palabra
     word = palabras.Nivel.__str__()
     Adivinar.desarrollo(turnos,word)
-    dibujo.Tortuga.fin()
+    dibujo.Tortuga.fin() 
+    
+
+    
+ 
+                
+         
