@@ -3,7 +3,7 @@ import turtle
 import time
 
 class Tortuga:
-            
+     #clase que define cada uno de los dibujos que hace la tortuga para el diagrama del ahorcado      
     def Ventana(t):
         turtle.setup(400,800,0,0)
         wn=turtle.Screen()
@@ -212,7 +212,7 @@ class Tortuga:
         
         
 class Mistakes(Tortuga):
-    
+#clase que define los pasos a seguir del dibujo de acuerdo a los errores cometidos que se evidencian en los turnos remanentes
     def draw(t,n):
         if n == 5:
             Tortuga.horca(t)
@@ -239,4 +239,3 @@ class Mistakes(Tortuga):
             Tortuga.lengua(t)
             time.sleep(8)
             Tortuga.borrar(t)
-    
