@@ -15,6 +15,7 @@ class Adivinar:
         t=turtle.Turtle()
         dibujo.Tortuga.Ventana(t)
         guesses = ''
+        #Lista vacía de los carácteres que han sido adivinados 
         listGuesses = []
         
         while turnos > 0:         
@@ -33,7 +34,7 @@ class Adivinar:
         
                     else:
             
-                # si no imprimir -
+                # si no imprimir - por cada uno que no haya sido adivinado (lo hace en una misma linea)
                         print ("_" , end= " ")     
                
                 # e incrementar el numero de fallas
@@ -57,23 +58,23 @@ class Adivinar:
             # de guess a guesses
                 guesses += guess                    
                 
-                    
-                alreadyGuessed = False
-                for w in listGuesses:
+            #para cuando                     
+                alreadyGuessed = False #falso por default para que cuando sea verdadero retorne el mensaje
+                for w in listGuesses: #compara lo adivinado con cada uno de los caracteres adivinados
                     if w == guess:
                         alreadyGuessed = True
                         break
                 if alreadyGuessed:
                     print("\n Ya adivinaste esta letra. Inténtalo de nuevo. \n")
-                    continue
+                    continue    #comienza el ciclo desde el comienzo y no se penaliza tomanto turnos
                 else:
-                    listGuesses.append(guess)
+                    listGuesses.append(guess) #añade a la lista el caracter adivinado
                     
             # si guess no esta en palabra
                 if guess not in word:  
                         
                     if not guess.isalpha():
-                        print("Debes adivinar una letra")
+                        print("Debes adivinar una letra")  #condicional para cuando lo adivinado no es una letra (no se penaliza)
                     
                     if guess.isalpha():
              # turnos se disminuyen
@@ -99,14 +100,12 @@ class Adivinar:
         
 
 
-#Bienvenida
-
-def setup_ind():
+def setup_ind(): 
     user = input("¿Nombre de usuario? ")
-
+    #bienvenida
     print ("Hola, " + user, "Juguemos ahorcado!")
     
-#esperar un segundo y medio
+    #esperar un segundo y medio
     time.sleep(1.5)
 
     turnos = 6
@@ -116,13 +115,8 @@ def setup_ind():
     print("Ahora debes escoger un nivel de dificultad")
     time.sleep(0.5)
 
-#establecemos la palabra
+    #establecemos la palabra
     word = palabras.Nivel.__str__()
+    #se ejecuta la clase para que se desarrolle el juego
     Adivinar.desarrollo(turnos,word)
-    dibujo.Tortuga.fin() 
-    
-
-    
- 
-                
-         
+    dibujo.Tortuga.fin() #la tortuga termina su proceso 
