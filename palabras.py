@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Apr  1 17:17:34 2020
-
 @author: lunag
 """
 
@@ -22,9 +21,10 @@ pal10=["videojuego","matematica","computador","asociacion","hemisferio","granadi
 
 class Nivel:
     import random
-    def __str__():
+    def __str__(): #constructor de la clase 
         while True:
-            lenw=int(input("Escoge un nivel de dificultad entre 3 y 10: "))
+            lenw=int(input("Escoge un nivel de dificultad entre 3 y 10: ")) #la longitud de la palabra a adivinar depende del nivel de dificultad escogido
+            #se examina cada uno de los casos posibles y se retorna una palabra de la longitud escogida
             if lenw == 3:
                 print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
                 print ("Ya puedes comenzar a adivinar")
