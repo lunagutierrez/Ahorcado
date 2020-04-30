@@ -1,0 +1,38 @@
+import pygame
+
+   
+#Iniciar pygame
+pygame.init()
+
+#Crear la pantalla
+win=pygame.display.set_mode((500,500))
+
+#Nombre de la pantalla
+pygame.display.set_caption("Ahorcado")
+icon = pygame.image.load('logo.png')
+pygame.display.set_icon(icon)
+fontTitle= pygame.font.Font ('freesansbold.ttf', 64) #fuente y tamaño del texto GRANDE
+fontBody= pygame.font.Font('freesansbold.ttf', 32) #fuente y tamaño del texto MEDIO
+fontLittle= pygame.font.Font('freesansbold.ttf', 20) #fuente y tamaño del texto PEQUEÑO
+
+
+
+
+#Inicio del juego
+
+running=True
+while running:
+    #cerrar y acabar el juego cuando el usuario haga click en cerrar
+    pygame.time.delay(100)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running=False
+    
+    win.fill((0,0,0)) #Color del fondo en RGB
+    
+    
+    win.blit(fontTitle.render("Fuente del título", 0, (255,255,255)), (0,0)) #Ubicar el texto en la pantalla
+    
+    pygame.display.update()
+            
+pygame.quit()
