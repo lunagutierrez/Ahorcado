@@ -1,4 +1,4 @@
-Este es el archivo principal, desde el cual debe ejecutarse el programa.
+"""Este es el archivo principal, desde el cual debe ejecutarse el programa.
 Importa el módulo ahorcadoind, que corresponde a la modalidad individual y el módulo ahorcadomult, que corresponde a la modalidad multijugador
 Requiere de la librería pygame y la librería sys
 """
