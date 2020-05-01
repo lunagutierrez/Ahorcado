@@ -5,6 +5,19 @@ Created on Wed Apr  1 17:17:34 2020
 """
 
 import random
+import pygame
+pygame.init()
+
+#Crear la pantalla
+win=pygame.display.set_mode((1200,800))
+
+#Nombre de la pantalla
+pygame.display.set_caption("Ahorcado")
+#icon = pygame.image.load('logo.png')
+#pygame.display.set_icon(icon)
+fontTitle= pygame.font.Font ('freesansbold.ttf', 60) #fuente y tamaño del texto GRANDE
+fontBody= pygame.font.Font('freesansbold.ttf', 32) #fuente y tamaño del texto MEDIO
+    #fontLittle= pygame.font.Font('freesansbold.ttf', 20) #fuente y tamaño del texto PEQUEÑO
 
 #Listas de palabras por longitud
 
@@ -26,52 +39,63 @@ class Nivel:
             lenw=int(input("Escoge un nivel de dificultad entre 3 y 10: ")) #la longitud de la palabra a adivinar depende del nivel de dificultad escogido
             #se examina cada uno de los casos posibles y se retorna una palabra de la longitud escogida
             if lenw == 3:
-                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
-                print ("Ya puedes comenzar a adivinar")
+                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
+                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
+                pygame.display.update()
                 return random.choice(pal3)
                 break
                         
             elif lenw == 4:
-                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
-                print ("Ya puedes comenzar a adivinar")
+                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
+                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
+                pygame.display.update()
                 return random.choice(pal4)
                 break
                     
             elif lenw == 5:
-                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
-                print ("Ya puedes comenzar a adivinar")
+                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
+                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
+                pygame.display.update()
                 return random.choice(pal5)
                 break
                         
             elif lenw == 6:
-                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
-                print ("Ya puedes comenzar a adivinar")
+                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
+                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
+                pygame.display.update()
                 return random.choice(pal6)
                 break
                         
             elif lenw == 7:
-                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
-                print ("Ya puedes comenzar a adivinar")
+                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
+                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
+                pygame.display.update()
                 return random.choice(pal7)
                 break
                         
             elif lenw ==8:
-                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
-                print ("Ya puedes comenzar a adivinar")
+                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
+                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
+                pygame.display.update()
                 return random.choice(pal8)
                 break            
                     
             elif lenw ==9:
-                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
-                print ("Ya puedes comenzar a adivinar")
+                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
+                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
+                pygame.display.update()
                 return random.choice(pal9)
                 break
                     
             elif lenw ==10:
-                print("La palabra que tienes que adivinar tiene {0} letras".format(lenw))
-                print ("Ya puedes comenzar a adivinar")
+                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
+                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
+                pygame.display.update()
                 return random.choice(pal10)
                 break
                 
             else:
-                print('{0} no es un entero entre 3 y 10'.format(lenw))
+                print()
+                
+                win.blit(fontBody.render('{0} no es un entero entre 3 y 10'.format(lenw), 0,(255, 255, 255)),(50,310))
+                pygame.display.update()
