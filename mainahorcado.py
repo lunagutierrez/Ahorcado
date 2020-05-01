@@ -1,24 +1,19 @@
 #!/usr/bin/python3.4
 # Setup Python ----------------------------------------------- #
 import pygame, sys
-import ahorcadoind, ahorcadomult
+#import ahorcadoind, ahorcadomult
 
 # Setup pygame/window ---------------------------------------- #
 mainClock = pygame.time.Clock()
 #from pygame.locals import *
 pygame.init()
-pygame.display.set_caption('game base')
+pygame.display.set_caption('Ahorado')
 screen = pygame.display.set_mode((800, 800),0,32)
 
 font = pygame.font.SysFont(None, 20)
 fontTitle= pygame.font.Font ('freesansbold.ttf', 50) #fuente y tamaño del texto GRANDE
 fontBody= pygame.font.Font('freesansbold.ttf', 32) 
 
-def draw_text(text, font, color, surface, x, y):
-    textobj = font.render(text, 1, color)
-    textrect = textobj.get_rect()
-    textrect.topleft = (x, y)
-    surface.blit(textobj, textrect)
 
 pick = False
 
@@ -104,8 +99,7 @@ def juego():
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    pygame.quit()
-                    sys.exit()
+                    running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
@@ -117,26 +111,9 @@ def ind():
     running = True
     while running:
         screen.fill((0,0,0))
-        screen.blit(fontTitle.render("Escoje una modalidad de juego", 0, (255,255,255)), (10,180))
-        
-        pygame.display.update()
-        mainClock.tick(60)
-        
-def multi():
-    running = True
-    while running:
-        screen.fill((0,0,0))
-        screen.blit(fontTitle.render("Escoje una modalidad de juego", 0, (255,255,255)), (10,180))
-        
-        pygame.display.update()
-        mainClock.tick(60)
-        
-def options():
-    running = True
-    while running:
-        screen.fill((0,0,0))
 
-        draw_text('options', font, (255, 255, 255), screen, 20, 20)
+        screen.blit(fontBody.render('Modo: Individual', 0,(0, 128, 128)), (50,80))
+        #ahorcadoind.setup_ind()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -147,6 +124,25 @@ def options():
         
         pygame.display.update()
         mainClock.tick(60)
+        
+def multi():
+    running = True
+    while running:
+        screen.fill((0,0,0))
+
+        screen.blit(fontBody.render('Modo: Multijugador', 0,(0, 128, 128)), (50,80))
+        #ahorcadomult.setup_mult()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+        
+        pygame.display.update()
+        mainClock.tick(60)
+
 
 main_menu()
 pygame.quit()
