@@ -9,6 +9,20 @@ import turtle
 import dibujo
 import winsound
 import ahorcadoind
+import pygame
+pygame.init()
+
+#Crear la pantalla
+win=pygame.display.set_mode((1200,800))
+
+#Nombre de la pantalla
+pygame.display.set_caption("Ahorcado")
+#icon = pygame.image.load('logo.png')
+#pygame.display.set_icon(icon)
+fontTitle= pygame.font.Font ('freesansbold.ttf', 60) #fuente y tamaño del texto GRANDE
+fontBody= pygame.font.Font('freesansbold.ttf', 32) #fuente y tamaño del texto MEDIO
+    #fontLittle= pygame.font.Font('freesansbold.ttf', 20) #fuente y tamaño del texto PEQUEÑO
+
 
 class palabras: #clase de palabras que permite escribir la palabra a adivinar tomando en cuenta el nivel de dificultad escogido
     def palabra(lev):
@@ -16,14 +30,15 @@ class palabras: #clase de palabras que permite escribir la palabra a adivinar to
                 word = input("Escribe una palabra en minusula de la longitud del nivel de dificultad escogido ")
                 try:
                     if not word.isalpha():
-                        print("Los caracteres de tu palabra solo pueden ser letras.")
+                        win.blit(fontBody.render("Los caracteres de tu palabra solo pueden ser letras.", 0,(255, 255, 255)),(50,480))
+                        pygame.display.update()
                     elif lev != len(word):
-                        print("Tu palabra debe ser de la longitud del nivel de dificultad escogido")
+                        win.blit(fontBody.render("Tu palabra debe ser de la longitud del nivel de dificultad escogido", 0,(255, 255, 255)), (50,480))
                     else:
                         return word
                         break
                 except:
-                    print('Lo digitado no es valido')     
+                    win.blit(fontBody.render('Lo digitado no es valido', 0,(255, 255, 255)), (50,480))   
 
 
 #Bienvenida
@@ -32,10 +47,10 @@ def setup_mult():
     user2 = input("¿Nombre de usuario jugador 2? ")
     
     #bienvenida
-    print ("Hola, " + user1 + " y " + user2 + " Juguemos ahorcado!")
-    
+    win.blit(fontTitle.render("Hola, " + user1 + " y " + user2 + " Juguemos ahorcado!", 0,(0, 128, 128)), (50,80))
+    pygame.display.update()
 
-    print("Primero va a adivinar " + user1 + " la palabra que escoja " + user2)
+    win.blit(fontTitle.render("Primero va a adivinar " + user1 + " la palabra que escoja " + user2, 0,(0, 128, 128)), (50,80))
 #esperar un segundo
     time.sleep(1)
     
