@@ -21,7 +21,7 @@ def main_menu():
     
     #Crear los tipos y tamaños de letra que se utilizarán     
     fontTitle= pygame.font.Font ('freesansbold.ttf', 50) #fuente y tamaño del texto GRANDE
-    fontBody= pygame.font.Font('freesansbold.ttf', 32) 
+    fontBody= pygame.font.Font('freesansbold.ttf', 32) #fuente y tamaño del texto MEDIANO
 
 
     pick = False
@@ -57,7 +57,8 @@ def main_menu():
                     
                     mx, my = pygame.mouse.get_pos()
                     
-                    button_a = pygame.Rect(270, 300, 250, 50)
+                    #Se crean los 2 botones, se ubican y se define el tamaño
+                    button_a = pygame.Rect(270, 300, 250, 50) 
                     button_b = pygame.Rect(270, 400, 250, 50)
                     
                     
@@ -76,15 +77,15 @@ def main_menu():
                                         sys.exit()
                                     if event.type == pygame.KEYDOWN:
                                         if event.key == pygame.K_ESCAPE:
-                                            running = False
+                                            running = False #Se regresa al menu ppal
                                 
                                 pygame.display.update()
                                 mainClock.tick(60)        
                             
-                    pygame.draw.rect(screen, (0, 128, 128), button_a)
+                    pygame.draw.rect(screen, (0, 128, 128), button_a) #Se hace el boton del color en la pantalla
                     textSurf, textRect = text_objects("Individual", fontBody)
-                    textRect.center = (397, 326)
-                    screen.blit(textSurf, textRect)
+                    textRect.center = (397, 326) #Centramos el texto en el boton
+                    screen.blit(textSurf, textRect) #ubicamos el texto sobre el boton (la superficie)
                     
                     #Si se escoge el modo multijugador                    
                     if button_b.collidepoint((mx, my)):
@@ -101,17 +102,17 @@ def main_menu():
                                        sys.exit()
                                    if event.type == pygame.KEYDOWN:
                                         if event.key == pygame.K_ESCAPE:
-                                            running = False
+                                            running = False #Regresa al menu ppal
                                 
                                pygame.display.update()
                                mainClock.tick(60)
 
 
                     
-                    pygame.draw.rect(screen, (0, 128, 128), button_b)
+                    pygame.draw.rect(screen, (0, 128, 128), button_b) #Se hace el boton del color en la pantalla
                     textSurf, textRect = text_objects("Multijugador", fontBody)
-                    textRect.center = (396, 426)
-                    screen.blit(textSurf, textRect)
+                    textRect.center = (396, 426) #Centramos el texto en el boton
+                    screen.blit(textSurf, textRect) #ubicamos el texto sobre el boton (la superficie)
                     
                     #Si se da click en la equis roja, salir                    
                     click = False
@@ -133,7 +134,7 @@ def main_menu():
         pygame.draw.rect(screen, (0, 130, 128), button_1)
         textSurf, textRect = text_objects("Jugar!", fontBody)
         textRect.center = (400, 330)
-        screen.blit(textSurf, textRect)
+        screen.blit(textSurf, textRect) #Se hace el boton con el texto (Jugar)
 
         #Si se da click en la equis roja, salir  
         pick = False
@@ -144,10 +145,10 @@ def main_menu():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
-                    sys.exit()
+                    sys.exit() #Se sale del juego
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    pick = True
+                    pick = True #Se da inicio al juego
 
         pygame.display.update()
         mainClock.tick(60)
