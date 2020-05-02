@@ -1,38 +1,32 @@
-import pygame
+from pygame_functions import *
+import random
 
-   
-#Iniciar pygame
-pygame.init()
+screenSize(800 , 800)
 
-#Crear la pantalla
-win=pygame.display.set_mode((500,500))
+#Demostración de como funcionan los inputs en python, con pygame_functions
 
-#Nombre de la pantalla
-pygame.display.set_caption("Ahorcado")
-icon = pygame.image.load('logo.png')
-pygame.display.set_icon(icon)
-fontTitle= pygame.font.Font ('freesansbold.ttf', 64) #fuente y tamaño del texto GRANDE
-fontBody= pygame.font.Font('freesansbold.ttf', 32) #fuente y tamaño del texto MEDIO
-fontLittle= pygame.font.Font('freesansbold.ttf', 20) #fuente y tamaño del texto PEQUEÑO
+instructionLabel = makeLabel("Please enter a word", 40, 10, 10, "blue", "Agency FB", "yellow")
+showLabel (instructionLabel)
 
+#posición en x, posición en y, Ancho, Altura (predeterminada 0), (Permitir la entrada de cualquier caracter=0, solo minúsculas=1, sólo mayúsculas=2), texto por defecto, número máximo de caracteres (si es 0 no tiene limites), tamaño de la fuente
+wordBox= makeTextBox(10, 80, 300, 0, "Enter text here", 0, 24)
 
+#Mostrar la caja de texto
+showTextBox(wordBox)
 
+#Como obtener un formato de entrada, variable en la que se guarda lo que ingresa el usuario
+entry = textBoxInput(wordBox)
 
-#Inicio del juego
+#variable, tamaño de fuente, posición x, posición y, rojo
 
-running=True
-while running:
-    #cerrar y acabar el juego cuando el usuario haga click en cerrar
-    pygame.time.delay(100)
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running=False
-    
-    win.fill((0,0,0)) #Color del fondo en RGB
-    
-    
-    win.blit(fontTitle.render("Fuente del título", 0, (255,255,255)), (0,0)) #Ubicar el texto en la pantalla
-    
-    pygame.display.update()
-            
-pygame.quit()
+wordLabel = makeLabel(entry, 30, 100, 300,"red")
+showLabel(wordLabel)
+
+"""Otras funciones útiles
+pause(1000) - pausa en milisegundos
+hideLabel (x) - econder un objeto que se había mostrado
+No hacer labels con el mismo nombre
+"""
+
+endWait()
+
