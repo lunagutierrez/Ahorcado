@@ -4,6 +4,9 @@ Documento que contiene las listas de palabras y las divide por niveles para el j
 """
 #importar random para elegir una palabra al azar de la lista
 
+
+#importar random para elegir una palabra al azar de la lista
+
 import random
 import pygame
 from pygame_functions import *
@@ -47,6 +50,11 @@ class Nivel:
                 
                 pause(1000)
                 
+                hideLabel(msglen)
+                hideLabel(msgcomenzar)
+                hideLabel(msgnivel)
+                hideLabel(box2)
+                
                 return random.choice(pal3)
                 break
                         
@@ -62,6 +70,11 @@ class Nivel:
                 
                 pause(1000)
                 
+                hideLabel(msglen)
+                hideLabel(msgcomenzar)
+                hideLabel(msgnivel)
+                hideLabel(box2)
+                
                 return random.choice(pal4)
                 break
                     
@@ -76,6 +89,11 @@ class Nivel:
                 showLabel(msgcomenzar)
                 
                 pause(1000)
+                
+                hideLabel(msglen)
+                hideLabel(msgcomenzar)
+                hideLabel(msgnivel)
+                hideLabel(box2)
                 
                 return random.choice(pal5)
                 
@@ -93,6 +111,11 @@ class Nivel:
                 
                 pause(1000)
                 
+                hideLabel(msglen)
+                hideLabel(msgcomenzar)
+                hideLabel(msgnivel)
+                hideLabel(box2)
+                
                 return random.choice(pal6)
                 
                 break
@@ -108,6 +131,11 @@ class Nivel:
                 showLabel(msgcomenzar)
                 
                 pause(1000)
+                
+                hideLabel(msglen)
+                hideLabel(msgcomenzar)
+                hideLabel(msgnivel)
+                hideLabel(box2)
                 
                 return random.choice(pal7)
                 
@@ -125,6 +153,11 @@ class Nivel:
                 
                 pause(1000)
                 
+                hideLabel(msglen)
+                hideLabel(msgcomenzar)
+                hideLabel(msgnivel)
+                hideLabel(box2)
+                
                 return random.choice(pal8)
                 
                 break            
@@ -141,6 +174,11 @@ class Nivel:
                 
                 pause(1000)
                 
+                hideLabel(msglen)
+                hideLabel(msgcomenzar)
+                hideLabel(msgnivel)
+                hideLabel(box2)
+                
                 return random.choice(pal9)
                 break
                     
@@ -156,6 +194,11 @@ class Nivel:
                 
                 pause(1000)
                 
+                hideLabel(msglen)
+                hideLabel(msgcomenzar)
+                hideLabel(msgnivel)
+                hideLabel(box2)
+                
                 return random.choice(pal10)
                 break
                 
@@ -167,9 +210,3 @@ class Nivel:
                 
                 hideLabel(msg)
              
-            
-    
-        
-
-
-
