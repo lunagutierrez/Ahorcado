@@ -1,23 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Apr  1 17:17:34 2020
-@author: lunag
+Documento que contiene las listas de palabras y las divide por niveles para el juego individual
 """
+#importar random para elegir una palabra al azar de la lista
 
 import random
 import pygame
-pygame.init()
+from pygame_functions import *
 
-#Crear la pantalla
-win=pygame.display.set_mode((1200,800))
-
-#Nombre de la pantalla
-pygame.display.set_caption("Ahorcado")
-#icon = pygame.image.load('logo.png')
-#pygame.display.set_icon(icon)
-fontTitle= pygame.font.Font ('freesansbold.ttf', 60) #fuente y tamaño del texto GRANDE
-fontBody= pygame.font.Font('freesansbold.ttf', 32) #fuente y tamaño del texto MEDIO
-    #fontLittle= pygame.font.Font('freesansbold.ttf', 20) #fuente y tamaño del texto PEQUEÑO
 
 #Listas de palabras por longitud
 
@@ -36,66 +26,150 @@ class Nivel:
     import random
     def __str__(): #constructor de la clase 
         while True:
-            lenw=int(input("Escoge un nivel de dificultad entre 3 y 10: ")) #la longitud de la palabra a adivinar depende del nivel de dificultad escogido
+            msgnivel= makeLabel("Escoge un nivel de dificultad entre 3 y 10: ", 35, 50, 300,"white","Agency FB", "black")
+            showLabel(msgnivel)
+            
+            box2=makeTextBox(510, 300, 30, 0, "", 1, 24)
+            showTextBox(box2)
+            
+            lenw = int(textBoxInput(box2)) #la longitud de la palabra a adivinar depende del nivel de dificultad escogido
             #se examina cada uno de los casos posibles y se retorna una palabra de la longitud escogida
+            
             if lenw == 3:
-                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
-                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
-                pygame.display.update()
+                
+                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                showLabel(msglen)
+                
+                pause(1000)
+                
+                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                showLabel(msgcomenzar)
+                
+                pause(1000)
+                
                 return random.choice(pal3)
                 break
                         
             elif lenw == 4:
-                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
-                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
-                pygame.display.update()
+                
+                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                showLabel(msglen)
+                
+                pause(1000)
+                
+                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                showLabel(msgcomenzar)
+                
+                pause(1000)
+                
                 return random.choice(pal4)
                 break
                     
             elif lenw == 5:
-                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
-                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
-                pygame.display.update()
+                
+                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                showLabel(msglen)
+                
+                pause(1000)
+                
+                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                showLabel(msgcomenzar)
+                
+                pause(1000)
+                
                 return random.choice(pal5)
+                
                 break
                         
             elif lenw == 6:
-                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
-                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
-                pygame.display.update()
+                
+                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                showLabel(msglen)
+                
+                pause(1000)
+                
+                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                showLabel(msgcomenzar)
+                
+                pause(1000)
+                
                 return random.choice(pal6)
+                
                 break
                         
             elif lenw == 7:
-                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
-                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
-                pygame.display.update()
+                
+                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                showLabel(msglen)
+                
+                pause(1000)
+                
+                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                showLabel(msgcomenzar)
+                
+                pause(1000)
+                
                 return random.choice(pal7)
+                
                 break
                         
             elif lenw ==8:
-                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
-                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
-                pygame.display.update()
+                
+                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                showLabel(msglen)
+                
+                pause(1000)
+                
+                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                showLabel(msgcomenzar)
+                
+                pause(1000)
+                
                 return random.choice(pal8)
+                
                 break            
                     
             elif lenw ==9:
-                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
-                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
-                pygame.display.update()
+                
+                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                showLabel(msglen)
+                
+                pause(1000)
+                
+                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                showLabel(msgcomenzar)
+                
+                pause(1000)
+                
                 return random.choice(pal9)
                 break
                     
             elif lenw ==10:
-                win.blit(fontBody.render("La palabra que tienes que adivinar tiene {0} letras".format(lenw), 0,(255, 255, 255)),(50,310))
-                win.blit(fontBody.render("Ya puedes comenzar a adivinar", 0,(255, 255, 255)),(50,310))
-                pygame.display.update()
+                
+                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                showLabel(msglen)
+                
+                pause(1000)
+                
+                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                showLabel(msgcomenzar)
+                
+                pause(1000)
+                
                 return random.choice(pal10)
                 break
                 
             else:
-                print()
+                msg= makeLabel('{0} no es un entero entre 3 y 10'.format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                showLabel(msg)
                 
-                win.blit(fontBody.render('{0} no es un entero entre 3 y 10'.format(lenw), 0,(255, 255, 255)),(50,310))
-                pygame.display.update()
+                pause(2000)
+                
+                hideLabel(msg)
+             
+            
+    
+        
+
+
+
