@@ -3,28 +3,21 @@
 Created on Sun Mar 29 18:00:26 2020
 @author: lunag
 """
+#importar las librerías necesarias
+
 import time
 import palabras
 import turtle
 import dibujo
 import pygame
-pygame.init()
+from pygame_functions import *
 
-#Crear la pantalla
-win=pygame.display.set_mode((1200,800))
 
-#Nombre de la pantalla
-pygame.display.set_caption("Ahorcado")
-#icon = pygame.image.load('logo.png')
-#pygame.display.set_icon(icon)
-fontTitle= pygame.font.Font ('freesansbold.ttf', 60) #fuente y tamaño del texto GRANDE
-fontBody= pygame.font.Font('freesansbold.ttf', 32) #fuente y tamaño del texto MEDIO
-    #fontLittle= pygame.font.Font('freesansbold.ttf', 20) #fuente y tamaño del texto PEQUEÑO
 
 class Adivinar:
     
     def desarrollo(turnos,word):
-        #
+        hideAll()
         t=turtle.Turtle()
         dibujo.Tortuga.Ventana(t)
         guesses = ''
@@ -35,7 +28,7 @@ class Adivinar:
                 
             # contados desde 0
                 failed = 0             
-                print()
+                
             # para cada letra en la palabra
                 for char in word: 
                 
@@ -43,31 +36,44 @@ class Adivinar:
                     if char in guesses:    
             
                 # imprimir el caracter
-                        win.blit(fontTitle.render(char, 0,(255, 255, 255)),(50,310))   
-                        pygame.display.update()
+                        msgchar = makeLabel(char, 35, 100, 100, "white", "Agency FB", "black")
+                        showLabel(msgchar)
+                        time.sleep(3)
+                                            
                     else:
             
                 # si no imprimir - por cada uno que no haya sido adivinado (lo hace en una misma linea)
-                        win.blit(fontTitle.render("_", 0,(0, 230, 230)), (0,310))     
-                        pygame.display.update()
+                        msgnochar = makeLabel("_", 35, 100, 100, "white", "Agency FB", "black")
+                        showLabel(msgnochar)
+                        time.sleep(3)
                 # e incrementar el numero de fallas
                         failed += 1
         
             # si no hay fallas
                 
             # Gano!
-                if failed == 0:   
-                    #win.blit(fontTitle.render("")
-                    win.blit(fontTitle.render("¡Ganáste!", 0,(0, 230, 230)), (20,310)) 
-                    pygame.display.update()
+                if failed == 0:
+                    hideAll()
+                    msgwin = makeLabel("¡Ganáste!", 35, 100, 100, "white", "Agency FB", "black")
+                    showLabel(msgwin)
                     time.sleep(3)
                     break
             # Cerrar la ventana de turtle
             # salir
                 #win.blit(fontTitle.render(("")
-                win.blit(fontBody.render("Estos son los caracteres que has adivinado hasta ahora: " + str(listGuesses), 0,(0, 230, 230)), (50,480))
+                
             # adivine una letra
-                guess = input("Adivina una letra: ").lower()
+                msgadivinado= makeLabel("Estos son los caracteres que has adivinado hasta ahora: " + str(listGuesses) , 35, 50, 500,"white","Agency FB", "black")
+                showLabel(msgadivinado)
+            
+                                
+                msgletra= makeLabel("Adivina una letra:  ", 35, 50, 300,"white","Agency FB", "black")
+                showLabel(msgletra)
+                
+                box3=makeTextBox(510, 300, 30, 0, "", 1, 24)
+                showTextBox(box3)
+                
+                guess=textBoxInput(box3)
         
             # de guess a guesses
                 guesses += guess                    
@@ -79,8 +85,10 @@ class Adivinar:
                         alreadyGuessed = True
                         break
                 if alreadyGuessed:
-                    win.blit(fontBody.render("\n Ya adivinaste esta letra. Inténtalo de nuevo. \n", 0,(255, 255, 255)), (50,480))
-                    pygame.display.update()
+                    msgerr= makeLabel(" \n Ya adivinaste esta letra. Inténtalo de nuevo. \n", 35, 50, 500,"white","Agency FB", "black")
+                    showLabel(msgerr)
+                    pause(1500)
+                    hideLabel(msgerr)
                     continue    #comienza el ciclo desde el comienzo y no se penaliza tomanto turnos
                 else:
                     listGuesses.append(guess) #añade a la lista el caracter adivinado
@@ -89,26 +97,32 @@ class Adivinar:
                 if guess not in word:  
                         
                     if not guess.isalpha():
-                        win.blit(fontBody.render("Debes adivinar una letra", 0,(255, 255, 255)), (250,480))  #condicional para cuando lo adivinado no es una letra (no se penaliza)
-                        pygame.display.update()
+                        msgerr= makeLabel(" \n Debes adivinar una letra. \n", 35, 50, 500,"white","Agency FB", "black")
+                        showLabel(msgerr)
+                        pause(1500)
+                        hideLabel(msgerr)
+                        
                     if guess.isalpha():
              # turnos se disminuyen
                         turnos -= 1        
          
             # imprima se equivoco
-                        win.blit(fontBody.render("Te equivocaste...", 0,(255, 10, 10)), (250,480))   
+                        msgerr= makeLabel("Te equivocaste. Ahora tienes" + str(turnos) + 'intentos', 35, 50, 500,"white","Agency FB", "black")
+                        showLabel(msgerr)
+                        pause(1500)
+                        hideLabel(msgerr)  
          
             # turnos que quedan
-                        win.blit(fontBody.render("Ahora tienes", + turnos, 'intentos', 0,(255, 255, 255)), (250,70))
-                        pygame.display.update()
             #Dibujo del ahorcado según los intentos que quedan
                         dibujo.Mistakes.draw(t,turnos)
                         
             #Cuando el jugador pierde
                         
                         if turnos ==0:
-                             win.blit(fontTitle.render("¡Ahorcado!", 0,(255, 0, 0)), (100,310))
-                             win.blit(fontBody.render("La palabra era " +word, 0,(255, 255, 255)), (150,310))  
+                            msgerr= makeLabel("¡Ahorcado!   La palabra era" +word , 35, 50, 500,"white","Agency FB", "black")
+                            showLabel(msgerr)
+                            pause(1500)
+                            hideLabel(msgerr)  
         
         dibujo.Tortuga.borrar(t)
         return turnos
@@ -116,25 +130,51 @@ class Adivinar:
 
 
 def setup_ind(): 
-    user = input("¿Nombre de usuario? ")
-    #bienvenida
-    win.blit(fontTitle.render("Hola, " + user, "Juguemos ahorcado!", 0,(0, 128, 128)), (50,80))
+            
+    screen = screenSize(800 , 800)
     
-    #esperar un segundo y medio
-    time.sleep(1.5)
-
+    username = makeLabel("Nombre de Usuario", 50, 10, 10, "white", "Agency FB", "black")
+    showLabel (username)
+        
+    box1=makeTextBox(350, 25, 300, 0, "", 0, 24)
+        #Mostrar la caja de texto
+    showTextBox(box1)
+    
+    user = textBoxInput(box1)
+        #bienvenida
+    hideLabel(username)
+    hideLabel(box1)
+    
+    pause(1000)
+    
+    bienvenida= makeLabel("Hola,   " + user + "   Juguemos ahorcado!", 35, 50, 50,"white","Agency FB", "black")
+    showLabel(bienvenida)
+    
     turnos = 6
-    win.blit(fontTitle.render("Tienes", turnos, "intentos", 0,(255, 255, 255)), (50,280))
-
-    time.sleep(0.5)
-    win.blit(fontTitle.render("Ahora debes escoger un nivel de dificultad", 0,(255, 255, 255)), (50,450))
-    time.sleep(0.5)
     
-    pygame.display.update()
+    pause(1000)
+    
+    msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 100, "white", "Agency FB", "black")
+    showLabel(msgturnos)
+    
+    pause(1000)
+    
+    msgnivel = makeLabel("Ahora debes escoger un nivel de dificultad", 35, 50, 200, "white", "Agency FB", "black")
+    showLabel(msgnivel)
+    
+    pause(1000)
     
     #establecemos la palabra
     word = palabras.Nivel.__str__()
+    
+    hideAll()
+    
+    pause(1000)
     #se ejecuta la clase para que se desarrolle el juego
     Adivinar.desarrollo(turnos,word)
-    dibujo.Tortuga.fin() #la tortuga termina su proceso 
+    
+    dibujo.Tortuga.fin() #la tortuga termina su proceso
+        
+    endWait()
+        
     
