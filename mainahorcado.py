@@ -1,9 +1,10 @@
-"""Este es el archivo principal, desde el cual debe ejecutarse el programa.
+"""
+Este es el archivo principal, desde el cual debe ejecutarse el programa.
 Importa el módulo ahorcadoind, que corresponde a la modalidad individual y el módulo ahorcadomult, que corresponde a la modalidad multijugador
 Requiere de la librería pygame y la librería sys
 """
 import pygame, sys
-#import ahorcadoind, ahorcadomult
+import ahorcadoind, ahorcadomult
 
 #Definición que nos permite crear botones
 def text_objects(text, font):
@@ -17,11 +18,11 @@ def main_menu():
     mainClock = pygame.time.Clock()
     pygame.init()
     pygame.display.set_caption('Ahorcado')
-    screen = pygame.display.set_mode((800, 800),0,32)
+    screen = pygame.display.set_mode((800, 800),400,0)
     
     #Crear los tipos y tamaños de letra que se utilizarán     
     fontTitle= pygame.font.Font ('freesansbold.ttf', 50) #fuente y tamaño del texto GRANDE
-    fontBody= pygame.font.Font('freesansbold.ttf', 32) #fuente y tamaño del texto MEDIANO
+    fontBody= pygame.font.Font('freesansbold.ttf', 32) 
 
 
     pick = False
@@ -57,8 +58,7 @@ def main_menu():
                     
                     mx, my = pygame.mouse.get_pos()
                     
-                    #Se crean los 2 botones, se ubican y se define el tamaño
-                    button_a = pygame.Rect(270, 300, 250, 50) 
+                    button_a = pygame.Rect(270, 300, 250, 50)
                     button_b = pygame.Rect(270, 400, 250, 50)
                     
                     
@@ -70,22 +70,22 @@ def main_menu():
                                 screen.fill((0,0,0))
                         
                                 screen.blit(fontBody.render('Modo: Individual', 0,(0, 128, 128)), (50,80))
-                                #ahorcadoind.setup_ind()
+                                ahorcadoind.setup_ind()
                                 for event in pygame.event.get():
                                     if event.type == pygame.QUIT:
                                         pygame.quit()
                                         sys.exit()
                                     if event.type == pygame.KEYDOWN:
                                         if event.key == pygame.K_ESCAPE:
-                                            running = False #Se regresa al menu ppal
+                                            running = False
                                 
                                 pygame.display.update()
                                 mainClock.tick(60)        
                             
-                    pygame.draw.rect(screen, (0, 128, 128), button_a) #Se hace el boton del color en la pantalla
+                    pygame.draw.rect(screen, (0, 128, 128), button_a)
                     textSurf, textRect = text_objects("Individual", fontBody)
-                    textRect.center = (397, 326) #Centramos el texto en el boton
-                    screen.blit(textSurf, textRect) #ubicamos el texto sobre el boton (la superficie)
+                    textRect.center = (397, 326)
+                    screen.blit(textSurf, textRect)
                     
                     #Si se escoge el modo multijugador                    
                     if button_b.collidepoint((mx, my)):
@@ -95,24 +95,24 @@ def main_menu():
                                screen.fill((0,0,0))
                         
                                screen.blit(fontBody.render('Modo: Multijugador', 0,(0, 128, 128)), (50,80))
-                               #ahorcadomult.setup_mult()
+                               ahorcadomult.setup_mult()
                                for event in pygame.event.get():
                                    if event.type == pygame.QUIT:
                                        pygame.quit()
                                        sys.exit()
                                    if event.type == pygame.KEYDOWN:
                                         if event.key == pygame.K_ESCAPE:
-                                            running = False #Regresa al menu ppal
+                                            running = False
                                 
                                pygame.display.update()
                                mainClock.tick(60)
 
 
                     
-                    pygame.draw.rect(screen, (0, 128, 128), button_b) #Se hace el boton del color en la pantalla
+                    pygame.draw.rect(screen, (0, 128, 128), button_b)
                     textSurf, textRect = text_objects("Multijugador", fontBody)
-                    textRect.center = (396, 426) #Centramos el texto en el boton
-                    screen.blit(textSurf, textRect) #ubicamos el texto sobre el boton (la superficie)
+                    textRect.center = (396, 426)
+                    screen.blit(textSurf, textRect)
                     
                     #Si se da click en la equis roja, salir                    
                     click = False
@@ -134,7 +134,7 @@ def main_menu():
         pygame.draw.rect(screen, (0, 130, 128), button_1)
         textSurf, textRect = text_objects("Jugar!", fontBody)
         textRect.center = (400, 330)
-        screen.blit(textSurf, textRect) #Se hace el boton con el texto (Jugar)
+        screen.blit(textSurf, textRect)
 
         #Si se da click en la equis roja, salir  
         pick = False
@@ -145,10 +145,10 @@ def main_menu():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     pygame.quit()
-                    sys.exit() #Se sale del juego
+                    sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    pick = True #Se da inicio al juego
+                    pick = True
 
         pygame.display.update()
         mainClock.tick(60)
