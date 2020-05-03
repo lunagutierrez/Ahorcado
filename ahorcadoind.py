@@ -106,7 +106,7 @@ class Adivinar:
                         alreadyGuessed = True
                         break
                 if alreadyGuessed:
-                    msgerr= makeLabel(" Ya adivinaste esta letra. Inténtalo de nuevo. ", 35, 50, 380,"white","Agency FB", "black")
+                    msgerr= makeLabel(" Ya adivinaste esta letra. Inténtalo de nuevo. ", 35, 50, 680,"white","Agency FB", "black")
                     showLabel(msgerr)
                     pause(1500)
                     hideLabel(msgerr)
@@ -121,7 +121,7 @@ class Adivinar:
                 if guess not in word:  
                         
                     if not guess.isalpha():
-                        msgerr= makeLabel(" Debes adivinar una letra. ", 35, 50, 380,"white","Agency FB", "black")
+                        msgerr= makeLabel(" Debes adivinar una letra. ", 35, 50, 680,"white","Agency FB", "black")
                         showLabel(msgerr)
                         pause(1500)
                         hideLabel(msgerr)
