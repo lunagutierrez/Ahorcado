@@ -6,6 +6,7 @@ Requiere de la librería pygame y la librería sys
 import pygame, sys
 import ahorcadoind, ahorcadomult
 
+
 #Definición que nos permite crear botones
 def text_objects(text, font):
     textSurface = font.render(text, True, (255,255,255))
@@ -18,7 +19,8 @@ def main_menu():
     mainClock = pygame.time.Clock()
     pygame.init()
     pygame.display.set_caption('Ahorcado')
-    screen = pygame.display.set_mode((800, 800),400,0)
+    screen = pygame.display.set_mode((800,800),0,0)
+    
     
     #Crear los tipos y tamaños de letra que se utilizarán     
     fontTitle= pygame.font.Font ('freesansbold.ttf', 50) #fuente y tamaño del texto GRANDE
