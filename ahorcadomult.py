@@ -93,8 +93,65 @@ def setup_mult():
     #Creamos la ventana del juego en turtle
     dibujo.Tortuga.Ventana(t)
     
+    msgturnos1 = makeLabel( "Escojan un nivel de dificultad (1 , 2 o 3)", 35, 50, 175,"white","Agency FB", "black")
+    showLabel(msgturnos1)
+    
+    while True:
+        boxdif=makeTextBox(500, 175, 25, 0, "", 1, 24)
+        #Mostrar la caja de texto
+        showTextBox(boxdif)
+        niveldif = textBoxInput(boxdif) 
+        
+        if not niveldif.isalpha():
+            
+            niveldif=int(niveldif)
+            
+            if niveldif == 3:
+                turnos = 6
+                msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 250, "white", "Agency FB", "black")
+                showLabel(msgturnos)
+                pause(3000)
+                hideLabel(boxdif)
+                hideLabel(msgturnos)
+                break
+                
+            elif niveldif == 2:
+                turnos = 9
+                msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 250, "white", "Agency FB", "black")
+                showLabel(msgturnos)
+                pause(3000)
+                hideLabel(boxdif)
+                hideLabel(msgturnos)
+                break
+            
+            elif niveldif == 1:
+                turnos = 12
+                msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 250, "white", "Agency FB", "black")
+                showLabel(msgturnos)
+                pause(3000)
+                hideLabel(boxdif)
+                hideLabel(msgturnos)
+                break
+            
+            else:
+                msgerror = makeLabel("{0} no es un entero entre 1 y 3".format(niveldif), 35, 50, 250, "white", "Agency FB", "black")
+                showLabel(msgerror)
+                pause(1000)
+                hideLabel(msgerror)
+                hideLabel(boxdif)
+                
+        else:
+            msgerror = makeLabel("{0} no es un entero entre 1 y 3".format(niveldif), 35, 50, 250, "white", "Agency FB", "black")
+            showLabel(msgerror)
+            pause(2000)
+            hideLabel(msgerror)
+            hideLabel(boxdif)
+            
     #ciclo while para determinar el nivel de dificultad y por ende la longitud de las palabras a adivinar
+    hideLabel(msgturnos1)
+    
     while True: 
+        
         msgnivel= makeLabel("Escojan la longitud de la palabra (entre 3 y 10): ", 35, 50, 175,"white","Agency FB", "black")
         showLabel(msgnivel)
             
@@ -151,11 +208,7 @@ def setup_mult():
     time.sleep(0.5)
     
     winsound.PlaySound("audioahorcado.wav", winsound.SND_ASYNC) #El jugador que adivina es advertido que puede mirar la pantalla
-    
-    turnos = 6 #ls turnos iniciales son establecidos
-    
-    msgturnos1 = makeLabel( user1+ " tienes " +str(turnos)+ " intentos ", 35, 50, 25,"white","Agency FB", "black")
-    showLabel(msgturnos1)
+       
     
     time.sleep(0.5)
     msgempezar1 = makeLabel( "¡Vamos a empezar!", 35, 50, 75,"white","Agency FB", "black")
@@ -200,7 +253,14 @@ def setup_mult():
     time.sleep(0.5)
     winsound.PlaySound("audioahorcado.wav", winsound.SND_ASYNC) #se puede volver a ver la pantalla
     
-    turnos = 6
+    if niveldif == 3:
+        turnos = 6
+        
+    elif niveldif == 2:
+        turnos = 9
+        
+    elif niveldif == 1:
+        turnos = 12
     
     msgturnos1 = makeLabel( user2+ " tienes " +str(turnos)+ " intentos ", 35, 50, 25,"white","Agency FB", "black")
     showLabel(msgturnos1)
@@ -276,4 +336,5 @@ def setup_mult():
             hideLabel(print2)
             
 # Cerrar la ventana de turtle
-    dibujo.Tortuga.fin() 
+    endWait()
+    dibujo.Tortuga.fin()   
