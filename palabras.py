@@ -2,6 +2,9 @@
 """
 Documento que contiene las listas de palabras y las divide por niveles para el juego individual
 """
+
+#importar random para elegir una palabra al azar de la lista
+
 import random
 import pygame
 from pygame_functions import *
@@ -18,7 +21,7 @@ pal8=["internet","labiales","sociales","biologia","viviparo","longitud","maripos
 pal9=["corolario","diafragma","antebrazo","sarampion","zanahoria","higienico","cuarentena","suculento","australia","enamorado","occidente","relampago","feminismo","eufemismo","prematuro","filosofia","prudencia","mitologia","dieciseis","provincia","enfermero","funciones","fortaleza","mapamundi","dimension","animales","fractales","dieciocho","exactitud","simpatico","inquietud","cincuenta","serenidad","paciencia","inclusion","depresion","romantico","miercoles","crescendo","confesion","barcelona","mordedura","audifonos","bendicion","dramatico"]
 pal10=["videojuego","matematica","computador","asociacion","hemisferio","granadilla","hipotalamo","arquitecto","calendario","tecnologia","hipopotamo","crucigrama","aritmetica","matrimonio","salchichon","transexual","psicologia","diversidad","tartamudeo","comentario","abecedario","superheroe","vacacional","uniformado","uzbekistan","jamaiquino","judicatura","obligacion","oficinista","defectuoso","cumpleaños","disciplina","plastilina","natureleza","mendicidad","zarigueyas","adaptacion","campesinos","lentejuela","despiadado","etnografia","transmitir","crepusculo","hospitales","sarpullido"]
 
-#Clase que divide los niveles del juego según la longitud de las palabras
+#Clase queescoje una palabra segun la longitud elegida
 
 class Nivel:
     import random
@@ -208,7 +211,6 @@ class Nivel:
             
             hideLabel(msgnivel)
             hideLabel(box2)
-            
             
              
             
