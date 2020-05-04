@@ -2,6 +2,10 @@
 """
 Created on Sun Mar 29 18:00:26 2020
 @author: lunag
+Este es el módulo para el juego individual
+En este modulo se crea una clase que es la base tanto del juego individual como el multijugador
+Usamos también el módulo pygame_functions, para crear cuadros de texto y cuadros de inputs que retornen lo que digita el usuario
+
 """
 #importar las librerías necesarias
 
@@ -14,31 +18,35 @@ from pygame_functions import *
 
 
 
-class Adivinar:
+class Adivinar: #Clase base del juego, donde el o los usuarios adivinan cuando ya tienen la palabra
     
     def desarrollo(turnos,word):
         
-        t=turtle.Turtle()
-        dibujo.Tortuga.Ventana(t)
-        guesses = ''
-        #Lista vacía de los carácteres que han sido adivinados 
-        listGuesses = []
+        t=turtle.Turtle() #Deifnir tortuga
+        dibujo.Tortuga.Ventana(t) #Abrir la ventana de turtle
+        guesses = '' 
+         
+        listGuesses = []#Lista vacía de los carácteres que han sido adivinados
         
+        #Crear mensaje de adivinar letra
         msgletra= makeLabel("Adivina una letra:  ", 35, 50, 50,"white","Agency FB", "black")
         showLabel(msgletra)
         
+        #Crear mensaje de caracteres adivinados        
         msgadivinado= makeLabel("Estos son los caracteres que has adivinado hasta ahora: ", 35, 50, 400,"white","Agency FB", "black")
         showLabel(msgadivinado)
         
+        #poición inicial guión para poner las letras
         x=100
         
+        #Crear los guiones según el número de letras
         for n in word:
             lin = makeLabel("-", 60, x, 200, "white", "Agency FB", "black")
             showLabel(lin)
             time.sleep(1)
             x= x + 55
         
-        if turnos == 12:
+        if turnos == 12: #Si elige el nivel 1
                            
             while turnos > 0: 
                 # adivine una letra
@@ -162,7 +170,7 @@ class Adivinar:
                                 showLabel(black3)
                                 break
                           
-        elif turnos == 9:
+        elif turnos == 9: #Si elige el nivel 2
             
             while turnos > 0: 
                 # adivine una letra
@@ -286,7 +294,7 @@ class Adivinar:
                                 showLabel(black3)
                                 break
         
-        elif turnos == 6:
+        elif turnos == 6: #Si elige el nivel 3
             while turnos > 0: 
                 # adivine una letra
                                                 
@@ -417,17 +425,19 @@ class Adivinar:
 
 def setup_ind(): 
             
-    screen = screenSize(800 , 800)
+    screen = screenSize(800 , 800) #inicir pygme unction
     
+    #C    
     username = makeLabel("Nombre de Usuario", 50, 10, 10, "white", "Agency FB", "black")
     showLabel (username)
         
     box1=makeTextBox(350, 25, 300, 0, "", 0, 24)
-        #Mostrar la caja de texto
+    #Mostrar la caja de texto
     showTextBox(box1)
     
-    user = textBoxInput(box1)
-        #bienvenida
+    user = textBoxInput(box1) #Nombre del usuario
+    
+    #bienvenida
     hideLabel(username)
     hideLabel(box1)
     
@@ -448,16 +458,16 @@ def setup_ind():
        
     
     while True:
-        boxdif=makeTextBox(500, 100, 25, 0, "", 1, 24)
-        #Mostrar la caja de texto
-        showTextBox(boxdif)
-        niveldif = textBoxInput(boxdif) 
+        boxdif=makeTextBox(500, 100, 25, 0, "", 1, 24) #Mostrar la caja de texto
+        
+        showTextBox(boxdif) 
+        niveldif = textBoxInput(boxdif) #retorn el nivel de dificultad elegido
         
         if not niveldif.isalpha():
             
             niveldif=int(niveldif)
             
-            if niveldif == 3:
+            if niveldif == 3: #Si elige el nivel 3, solo tiene 6 turnos
                 turnos = 6
                 msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 200, "white", "Agency FB", "black")
                 showLabel(msgturnos)
@@ -465,7 +475,7 @@ def setup_ind():
                 hideLabel(boxdif)
                 break
                 
-            elif niveldif == 2:
+            elif niveldif == 2: #Si elige el nivel 2, tiene 9 turnos
                 turnos = 9
                 msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 200, "white", "Agency FB", "black")
                 showLabel(msgturnos)
@@ -473,7 +483,7 @@ def setup_ind():
                 hideLabel(boxdif)
                 break
             
-            elif niveldif == 1:
+            elif niveldif == 1: #Si elige el nivel 1, tiene 12 turnos
                 turnos = 12
                 msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 200, "white", "Agency FB", "black")
                 showLabel(msgturnos)
@@ -481,14 +491,14 @@ def setup_ind():
                 hideLabel(boxdif)
                 break
             
-            else:
+            else: #si no digita un número entre 1 y 3
                 msgerror = makeLabel("{0} no es un entero entre 1 y 3".format(niveldif), 35, 50, 200, "white", "Agency FB", "black")
                 showLabel(msgerror)
                 pause(1000)
                 hideLabel(msgerror)
                 hideLabel(boxdif)
                 
-        else:
+        else: #si digita una letra
             msgerror = makeLabel("{0} no es un entero entre 1 y 3".format(niveldif), 35, 50, 200, "white", "Agency FB", "black")
             showLabel(msgerror)
             pause(2000)
@@ -500,6 +510,7 @@ def setup_ind():
     #establecemos la palabra
     word = palabras.Nivel.__str__()
     
+    #esconder los mensajes creados    
     hideLabel(bienvenida)
     hideLabel(msgdif)
     hideLabel(msgturnos)
@@ -507,11 +518,9 @@ def setup_ind():
         
     
     pause(1000)
+    
     #se ejecuta la clase para que se desarrolle el juego
     Adivinar.desarrollo(turnos,word)
     
     dibujo.Tortuga.fin() #la tortuga termina su proceso
     endWait()
-    
-    
-    
