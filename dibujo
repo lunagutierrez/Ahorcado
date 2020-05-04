@@ -214,7 +214,7 @@ class Tortuga:
         
 class Mistakes(Tortuga):
 #clase que define los pasos a seguir del dibujo de acuerdo a los errores cometidos que se evidencian en los turnos remanentes
-    def draw3(t,n):
+    def draw3(t,n): #Dibujo si el jugador elige el nivel 3
         if n == 5:
             Tortuga.horca(t)
             Tortuga.cabeza(t)
@@ -241,7 +241,7 @@ class Mistakes(Tortuga):
             time.sleep(4.5)
             Tortuga.borrar(t)
             
-    def draw2(t,n):
+    def draw2(t,n): #Dibujo si el jugador elige el nivel 2
             if n == 8:
                 Tortuga.horca(t)
                 Tortuga.cabeza(t)
@@ -271,7 +271,7 @@ class Mistakes(Tortuga):
                 time.sleep(4.5)
                 Tortuga.borrar(t)
                 
-    def draw1(t,n):
+    def draw1(t,n): #Dibujo si el jugador elige el nivel 1
             if n == 11:
                 Tortuga.horca(t)
                 
