@@ -6,28 +6,27 @@ Requiere de la librería pygame y la librería sys
 import pygame, sys
 import ahorcadoind, ahorcadomult
 
-#Definición que nos permite crear botones
 
+#Definición que nos permite crear botones
 def text_objects(text, font):
     textSurface = font.render(text, True, (255,255,255))
     return textSurface, textSurface.get_rect()
 
-  #import ahorcadoind, ahorcadomult
-
-#Crear la ventana de pygame
-mainClock = pygame.time.Clock()
-pygame.init()
-pygame.display.set_caption('Ahorcado')
-screen = pygame.display.set_mode((800, 800),400,0)
-    
-#Crear los tipos y tamaños de letra que se utilizarán     
-fontTitle= pygame.font.Font ('freesansbold.ttf', 50) #fuente y tamaño del texto GRANDE
-fontBody= pygame.font.Font('freesansbold.ttf', 32) 
-
-
-
 def main_menu():
-  
+    
+
+    #Crear la ventana de pygame
+    mainClock = pygame.time.Clock()
+    pygame.init()
+    pygame.display.set_caption('Ahorcado')
+    screen = pygame.display.set_mode((800,800),0,0)
+    
+    
+    #Crear los tipos y tamaños de letra que se utilizarán     
+    fontTitle= pygame.font.Font ('freesansbold.ttf', 50) #fuente y tamaño del texto GRANDE
+    fontBody= pygame.font.Font('freesansbold.ttf', 32) 
+
+
     pick = False
 
     #Empieza el ciclo
@@ -74,7 +73,6 @@ def main_menu():
                         
                                 screen.blit(fontBody.render('Modo: Individual', 0,(0, 128, 128)), (50,80))
                                 ahorcadoind.setup_ind()
-                                
                                 for event in pygame.event.get():
                                     if event.type == pygame.QUIT:
                                         pygame.quit()
@@ -100,7 +98,6 @@ def main_menu():
                         
                                screen.blit(fontBody.render('Modo: Multijugador', 0,(0, 128, 128)), (50,80))
                                ahorcadomult.setup_mult()
-                               
                                for event in pygame.event.get():
                                    if event.type == pygame.QUIT:
                                        pygame.quit()
@@ -158,93 +155,10 @@ def main_menu():
         pygame.display.update()
         mainClock.tick(60)
 
-    
-
-
-
-    
-screen = pygame.display.set_mode((800, 800),400,0)
-#Crear los tipos y tamaños de letra que se utilizarán     
-fontTitle= pygame.font.Font ('freesansbold.ttf', 50) #fuente y tamaño del texto GRANDE
-fontBody= pygame.font.Font('freesansbold.ttf', 32)     
-
-
-    
-def again():
-   
-    click = False
-    while True:    
-        screen.fill((0,0,0))
-        mx, my = pygame.mouse.get_pos()
-        
-        #Se crean los 2 botones, se ubican y se define el tamaño
-        button_j = pygame.Rect(270, 300, 250, 50) 
-        button_s = pygame.Rect(270, 400, 250, 50)
-        
-        
-        #Si se escoge el modo individual
-        if button_j.collidepoint((mx, my)):
-            if click:
-                running = True
-                while running:
-                    screen.fill((0,0,0))
-                    
-                    main_menu()
-                    break 
-                
-                    for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
-                            pygame.quit()
-                            sys.exit()
-                        if event.type == pygame.KEYDOWN:
-                            if event.key == pygame.K_ESCAPE:
-                                running = False #Se regresa al menu ppal
-                                pygame.display.update()
-                                mainClock.tick(60)        
-                                
-        pygame.draw.rect(screen, (0, 128, 128), button_j) #Se hace el boton del color en la pantalla
-        textSurf, textRect = text_objects("Jugar de nuevo", fontBody)
-        textRect.center = (397, 326) #Centramos el texto en el boton
-        screen.blit(textSurf, textRect) #ubicamos el texto sobre el boton (la superficie)
-                        
-                        #Si se escoge el modo multijugador                    
-        if button_s.collidepoint((mx, my)):
-            if click:
-                running = True
-                while running:
-                    screen.fill((0,0,0))
-                    
-                    screen.blit(fontBody.render('Adios', 0,(0, 128, 128)), (50,80))
-                    pygame.quit()
-                    sys.exit()
-                                
-                    pygame.display.update()
-                    mainClock.tick(60)
-                        
-        pygame.draw.rect(screen, (0, 128, 128), button_s) #Se hace el boton del color en la pantalla
-        textSurf, textRect = text_objects("Salir", fontBody)
-        textRect.center = (396, 426) #Centramos el texto en el boton
-        screen.blit(textSurf, textRect) #ubicamos el texto sobre el boton (la superficie)
-                        
-                        #Si se da click en la equis roja, salir                    
-        click = False
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    click = True
-                        
-        pygame.display.update()
-        mainClock.tick(60)
-        
-
-#main       
-again()   
+  
+#BEGINNING OF EXECUTION
+main_menu()
 pygame.quit()
 quit()
+#END OF EXECUTION
         
