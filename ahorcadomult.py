@@ -3,91 +3,169 @@
 Created on Mon Apr  6 18:04:53 2020
 @author: lunag
 """
-
 import time
 import turtle
 import dibujo
 import winsound
 import ahorcadoind
 import pygame
-pygame.init()
-
-#Crear la pantalla
-win=pygame.display.set_mode((1200,800))
-
-#Nombre de la pantalla
-pygame.display.set_caption("Ahorcado")
-#icon = pygame.image.load('logo.png')
-#pygame.display.set_icon(icon)
-fontTitle= pygame.font.Font ('freesansbold.ttf', 60) #fuente y tamaño del texto GRANDE
-fontBody= pygame.font.Font('freesansbold.ttf', 32) #fuente y tamaño del texto MEDIO
-    #fontLittle= pygame.font.Font('freesansbold.ttf', 20) #fuente y tamaño del texto PEQUEÑO
+from pygame_functions import *
 
 
 class palabras: #clase de palabras que permite escribir la palabra a adivinar tomando en cuenta el nivel de dificultad escogido
     def palabra(lev):
-            while True:  
-                word = input("Escribe una palabra en minusula de la longitud del nivel de dificultad escogido ")
+            while True:
+                msgin = makeLabel( "Escribe una palabra de la longitud escogida", 35, 50, 25,"white","Agency FB", "black")
+                showLabel(msgin)
+                
+                wordbox=makeTextBox(50, 75, 350, 0, "", 0, 24)
+                showTextBox(wordbox)
+                
+                word=str(textBoxInput(wordbox)).lower()
+    
                 try:
                     if not word.isalpha():
-                        win.blit(fontBody.render("Los caracteres de tu palabra solo pueden ser letras.", 0,(255, 255, 255)),(50,480))
-                        pygame.display.update()
+                        msga = makeLabel( "Los caracteres de tu palabra solo pueden ser letras", 35, 50, 125,"white","Agency FB", "black")
+                        showLabel(msga)
+                        pause(2500)
+                        hideLabel(msga)
+                        
                     elif lev != len(word):
-                        win.blit(fontBody.render("Tu palabra debe ser de la longitud del nivel de dificultad escogido", 0,(255, 255, 255)), (50,480))
+                        msga = makeLabel( "Tu palabra debe ser de la longitud escogida", 35, 50, 125,"white","Agency FB", "black")
+                        showLabel(msga)
+                        pause(2500)
+                        hideLabel(msga)
+                        
                     else:
+                        hideLabel(msgin)
+                        hideLabel(wordbox)
                         return word
                         break
+                    
                 except:
-                    win.blit(fontBody.render('Lo digitado no es valido', 0,(255, 255, 255)), (50,480))   
+                    msga = makeLabel( "Lo digitado no es válido", 35, 50, 125,"white","Agency FB", "black")
+                    showLabel(msga)
+                    pause(2500)
+                    hideLabel(msga)
+                    
+                hideLabel(msgin)
+                hideLabel(wordbox)
+            
+            
 
 
 #Bienvenida
 def setup_mult():
-    user1 = input("¿Nombre de usuario jugador 1? ")
-    user2 = input("¿Nombre de usuario jugador 2? ")
     
-    #bienvenida
-    win.blit(fontTitle.render("Hola, " + user1 + " y " + user2 + " Juguemos ahorcado!", 0,(0, 128, 128)), (50,80))
-    pygame.display.update()
-
-    win.blit(fontTitle.render("Primero va a adivinar " + user1 + " la palabra que escoja " + user2, 0,(0, 128, 128)), (50,80))
+    screen = screenSize(800 , 800)
+    
+    username1 = makeLabel("Nombre de Usuario del jugador 1", 50, 10, 10, "white", "Agency FB", "black")
+    usbox1 = makeTextBox(550, 25, 150, 0, "", 0, 24)
+    showLabel (username1)
+    showTextBox(usbox1)
+    user1 = str(textBoxInput(usbox1))
+    hideLabel(username1)
+    hideLabel(usbox1)
+    
+    username2 = makeLabel("Nombre de Usuario del jugador 2", 50, 10, 10, "white", "Agency FB", "black")
+    usbox2 = makeTextBox(550, 25, 150, 0, "", 0, 24)
+    showLabel (username2)
+    showTextBox(usbox2)
+    user2 = str(textBoxInput(usbox2))
+    hideLabel(username2)
+    hideLabel(usbox2)
+    
+    pause(1000)
+    
+    bienvenida = makeLabel("Hola " +user1+ " y " +user2+ " Juguemos ahorcado!", 35, 50, 25,"white","Agency FB", "black")
+    showLabel(bienvenida)
+    
+    pause(1000)
+    
+    orden = makeLabel("Primero va a adivinar  " + user1 + "  la palabra que escoja  " + user2, 35, 50, 100,"white","Agency FB", "black")
+    showLabel(orden)
+     
+ 
 #esperar un segundo
-    time.sleep(1)
-    
-           
-    
+    pause(1000)
+   
     t=turtle.Turtle()
     #Creamos la ventana del juego en turtle
     dibujo.Tortuga.Ventana(t)
     
     #ciclo while para determinar el nivel de dificultad y por ende la longitud de las palabras a adivinar
     while True: 
-        lev = int(input("Escojan un nivel de dificultad entre 3 y 10: "))
-        try:
+        msgnivel= makeLabel("Escojan la longitud de la palabra (entre 3 y 10): ", 35, 50, 175,"white","Agency FB", "black")
+        showLabel(msgnivel)
+            
+        box4=makeTextBox(567, 175, 40, 0, "", 2, 24)
+        showTextBox(box4)
+                            
+        lev = textBoxInput(box4)
+        
+        if not lev.isalpha():
+            
+            lev=int(lev)
+                   
             if 3 <= lev <= 10:
-                print("La palabra que tienes que adivinar tiene {0} letras".format(lev))
+                num= makeLabel("Las palabras que tienen que adivinar tienen {0} letras".format(lev), 35, 50, 250,"white","Agency FB", "black")
+                showLabel(num)
+                pause(2500)
+                hideLabel(bienvenida)
+                hideLabel(orden)  
+                hideLabel(msgnivel)
+                hideLabel(box4)  
+                hideLabel(num)     
                 break
-            else:
-                print('{0} no esta entre 3 y 10'.format(lev))
-        
-        except:
-            print('{0} no es un entero entre 3 y 10'.format(lev))
                 
+            else:
+                num= makeLabel("{0} no es un entero entre 3 y 10".format(lev), 35, 50, 250,"white","Agency FB", "black")
+                showLabel(num)
+                pause(2000)
+                hideLabel(num)
         
-    print ("\n" + user1 + " deja de mirar la pantalla mientras " + user2 + " digita la palabra que vas a adivinar")   
-       
+        else:
+            num= makeLabel("{0} no es un entero entre 3 y 10".format(lev), 35, 50, 250,"white","Agency FB", "black")
+            showLabel(num)
+            pause(2000)
+            hideLabel(num)
+            
+        hideLabel(msgnivel)
+        hideLabel(box4)
+                
+    msg2 = makeLabel( user1 + " cierra los ojos mientras " + user2 + " digita la palabra", 35, 50, 25,"white","Agency FB", "black")
+    showLabel(msg2)
+    
+    msg3 = makeLabel("Puedes abrir los ojos cuando escuches el sonido", 35, 50, 100,"white","Agency FB", "black")
+    showLabel(msg3)    
+    
+    pause(5000)
+    
+    hideLabel(msg2)
+    hideLabel(msg3)
+          
     #usamos la clase palabras con el nivel escogido en el ciclo while de lev previo 
     #el jugador 2 digita la palabra a adivinar
     word = palabras.palabra(lev)
+    
     time.sleep(0.5)
-    print('\n' * 60)
+    
     winsound.PlaySound("audioahorcado.wav", winsound.SND_ASYNC) #El jugador que adivina es advertido que puede mirar la pantalla
+    
     turnos = 6 #ls turnos iniciales son establecidos
-    print("Tienes", turnos, "intentos")
-
+    
+    msgturnos1 = makeLabel( user1+ " tienes " +str(turnos)+ " intentos ", 35, 50, 25,"white","Agency FB", "black")
+    showLabel(msgturnos1)
+    
     time.sleep(0.5)
-    print("Es hora de empezar el juego")
-    time.sleep(0.5)
+    msgempezar1 = makeLabel( "¡Vamos a empezar!", 35, 50, 75,"white","Agency FB", "black")
+    showLabel(msgempezar1)
+    
+    pause(2000)
+    
+    hideLabel(msgturnos1)
+    hideLabel(msgempezar1)
+    
     ta = time.process_time()
     #usamos la clase de la modalidad individual
     #calculamos el puntaje como el producto de los turnos restantes y el nivel de dificultad*10
@@ -97,49 +175,105 @@ def setup_mult():
     
   #segunda ronda  
     time.sleep(0.5)
-    print('\n' * 60)
-    print("Ahora " + user2 + " va a adivinar la palabra que escoja " + user1)
-    print("")
-    print (user2 + " deja de mirar la pantalla mientras " + user1 + " digita la palabra que vas a adivinar")
-        
+    
+    orden2 = makeLabel("Ahora " + user2 + " va a adivinar la palabra que escoja " + user1, 35, 50, 25,"white","Agency FB", "black")
+    showLabel(orden2)
+    
+    pause(1000)
+    
+    msg2 = makeLabel( user2 + " cierra los ojos mientras " + user1 + " digita la palabra", 35, 50, 100,"white","Agency FB", "black")
+    showLabel(msg2)
+    
+    msg3 = makeLabel("Puedes abrirlos cuando escuches el sonido", 35, 50, 175,"white","Agency FB", "black")
+    showLabel(msg3) 
+    
+    pause(5000)
+    
+    hideLabel(msg2)
+    hideLabel(msg3)
+    hideLabel(orden2)
         
     #usamos la clase palabras con el nivel escogido en el ciclo while de lev previo 
     #el jugador 1 digita la palabra a adivinar
     word = palabras.palabra(lev)
+    
     time.sleep(0.5)
-    print('\n' * 60)
     winsound.PlaySound("audioahorcado.wav", winsound.SND_ASYNC) #se puede volver a ver la pantalla
+    
     turnos = 6
-    print("Tienes", turnos, "intentos")
-
+    
+    msgturnos1 = makeLabel( user2+ " tienes " +str(turnos)+ " intentos ", 35, 50, 25,"white","Agency FB", "black")
+    showLabel(msgturnos1)
+    
     time.sleep(0.5)
-    print("Es hora de empezar el juego")
-    time.sleep(0.5)
+    msgempezar1 = makeLabel( "¡Vamos a empezar!", 35, 50, 75,"white","Agency FB", "black")
+    showLabel(msgempezar1)
+    
+    pause(2000)
+    
+    hideLabel(msgturnos1)
+    hideLabel(msgempezar1)
+    
+    
     tc = time.process_time()
-#establecemos la palabra
-        
+    #establecemos la palabra
+    puntaje2=int(ahorcadoind.Adivinar.desarrollo(turnos,word))*lev*10     #toma el valor (int) de los turnos    
+    
     td = time.process_time()     
     #calculamos el puntaje como el producto de los turnos restantes y el nivel de dificultad*10
-    puntaje2=int(ahorcadoind.Adivinar.desarrollo(turnos,word))*lev*10     #toma el valor (int) de los turnos          
+              
     t2 = td - tc #el tiempo que le toma al jugador2 adivinar
         
     
     #se comparan los puntajes para determinar el ganador
     if puntaje1 < puntaje2:
-        print(user2 + " ha ganado la partida con un puntaje de {0}".format(puntaje2),", mientras que " + user1 + " solo ha obtenido {0} puntos.".format(puntaje1))
-    elif puntaje2 < puntaje1:
-        print(user1 + " ha ganado la partida con un puntaje de {0}".format(puntaje1),", mientras que " + user2 + " solo ha obtenido {0} puntos.".format(puntaje2))
-    elif puntaje1 == 0 and puntaje2 == 0:
-        print("Ninguno de ustedes logró adivinar las palabras. No hay un ganador")
-    else:
-        print ("Ambos jugadores han obtenido un puntaje de {0}".format(puntaje1)) #en caso de empate, gana quien haya tardado el menor tiempo
-        if t1 < t2:
-            print(user1 + " Ha ganado pues ha adivinado en un menor tiempo")
-        elif t2 < t1:
-            print(user2 + " Ha ganado pues ha adivinado en un menor tiempo")
-        else:
-            print("Ha habido un empate")
-             
-# Cerrar la ventana de turtle
-    dibujo.Tortuga.fin()           
+        print1 = makeLabel(user2 + " ha ganado la partida con un puntaje de {0}".format(puntaje2), 35, 50, 25,"white","Agency FB", "black")
+        showLabel(print1)
+        print2 = makeLabel(", mientras que " + user1 + " solo ha obtenido {0} puntos.".format(puntaje1), 35, 50, 100,"white","Agency FB", "black")
+        showLabel(print2)
+        pause(4000)
+        hideLabel(print1)
+        hideLabel(print2)
     
+    elif puntaje2 < puntaje1:
+        print1 = makeLabel(user1 + " ha ganado la partida con un puntaje de {0}".format(puntaje1), 35, 50, 25,"white","Agency FB", "black")
+        showLabel(print1)
+        print2 = makeLabel(", mientras que " + user2 + " solo ha obtenido {0} puntos.".format(puntaje2), 35, 50, 100,"white","Agency FB", "black")
+        showLabel(print2)
+        pause(4000)
+        hideLabel(print1)
+        hideLabel(print2)
+        
+    elif puntaje1 == 0 and puntaje2 == 0:
+        print1 = makeLabel("Ninguno de los dos logró adivinar las palabras. No hay un ganador", 35, 50, 25,"white","Agency FB", "black")
+        showLabel(print1)
+        pause(4000)
+        hideLabel(print1)
+    
+    else:
+        print1 = makeLabel("Ambos jugadores han obtenido un puntaje de {0}".format(puntaje1), 35, 50, 25,"white","Agency FB", "black")
+        showLabel(print1)
+        
+        if t1 < t2:
+            print2 = makeLabel( user1 + " ha ganado pues ha adivinado en un menor tiempo", 35, 50, 100,"white","Agency FB", "black")
+            showLabel(print2)
+            pause(4000)
+            hideLabel(print1)
+            hideLabel(print2)
+            
+        elif t2 < t1:
+            print2 = makeLabel( user2 + " ha ganado pues ha adivinado en un menor tiempo", 35, 50, 100,"white","Agency FB", "black")
+            showLabel(print2)
+            pause(4000)
+            hideLabel(print1)
+            hideLabel(print2)
+            
+        else:
+            print2 = makeLabel("Ha habido un empate", 35, 50, 100,"white","Agency FB", "black")
+            showLabel(print2)
+            pause(4000)
+            hideLabel(print1)
+            hideLabel(print2)
+            
+# Cerrar la ventana de turtle
+    dibujo.Tortuga.fin() 
