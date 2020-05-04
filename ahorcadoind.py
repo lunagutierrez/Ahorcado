@@ -3,7 +3,6 @@
 Created on Sun Mar 29 18:00:26 2020
 @author: lunag
 """
-#importar las librerías necesarias
 import time
 import palabras
 import turtle
@@ -45,7 +44,7 @@ class Adivinar:
                 box3=makeTextBox(250, 50, 35, 0, "", 1, 24)
                 showTextBox(box3)
                 
-                guess=textBoxInput(box3)
+                guess=textBoxInput(box3).lower()
                 
                 # de guess a guesses
                 guesses += guess
@@ -90,9 +89,11 @@ class Adivinar:
                     showLabel(black)
                     showLabel(black1)
                     showLabel(black2)
-                    msgwin = makeLabel("¡Ganáste!", 60, 300, 200, "white", "Agency FB", "black")
+                    msgwin = makeLabel("¡Adivináste!", 60, 300, 200, "white", "Agency FB", "black")
                     showLabel(msgwin)
-                    time.sleep(3)
+                    time.sleep(3.3)
+                    black3= makeLabel("                                           ", 70, 290, 200, "white", "Agency FB", "black")
+                    showLabel(black3)
                     break
             # Cerrar la ventana de turtle
             # salir
@@ -106,7 +107,7 @@ class Adivinar:
                         alreadyGuessed = True
                         break
                 if alreadyGuessed:
-                    msgerr= makeLabel(" Ya adivinaste esta letra. Inténtalo de nuevo. ", 35, 50, 680,"white","Agency FB", "black")
+                    msgerr= makeLabel(" Ya adivinaste esta letra. Inténtalo de nuevo. ", 35, 50, 600,"white","Agency FB", "black")
                     showLabel(msgerr)
                     pause(1500)
                     hideLabel(msgerr)
@@ -121,7 +122,7 @@ class Adivinar:
                 if guess not in word:  
                         
                     if not guess.isalpha():
-                        msgerr= makeLabel(" Debes adivinar una letra. ", 35, 50, 680,"white","Agency FB", "black")
+                        msgerr= makeLabel(" Debes adivinar una letra. ", 35, 50, 600,"white","Agency FB", "black")
                         showLabel(msgerr)
                         pause(1500)
                         hideLabel(msgerr)
@@ -154,7 +155,10 @@ class Adivinar:
                             showLabel(black2)
                             msgerr= makeLabel("¡Ahorcado!   La palabra era " +word , 60, 100, 200,"white","Agency FB", "black")
                             showLabel(msgerr)
-                            pause(1500)
+                            pause(3000)
+                            black3= makeLabel("                                                                       ", 70, 90, 200, "white", "Agency FB", "black")
+                            showLabel(black3)
+                            break
                           
                                 
         dibujo.Tortuga.borrar(t)
@@ -213,3 +217,7 @@ def setup_ind():
     dibujo.Tortuga.fin() #la tortuga termina su proceso
         
     endWait()
+        
+    
+    
+    
