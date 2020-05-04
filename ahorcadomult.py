@@ -23,31 +23,32 @@ class palabras: #clase de palabras que permite escribir la palabra a adivinar to
                 
                 word=str(textBoxInput(wordbox)).lower()
     
-                try:
-                    if not word.isalpha():
+                try: 
+                    if not word.isalpha():#si no escribe letras
                         msga = makeLabel( "Los caracteres de tu palabra solo pueden ser letras", 35, 50, 125,"white","Agency FB", "black")
                         showLabel(msga)
                         pause(2500)
                         hideLabel(msga)
                         
-                    elif lev != len(word):
+                    elif lev != len(word):#si escribe una palabra de longitud incorrecta
                         msga = makeLabel( "Tu palabra debe ser de la longitud escogida", 35, 50, 125,"white","Agency FB", "black")
                         showLabel(msga)
                         pause(2500)
                         hideLabel(msga)
                         
-                    else:
+                    else: #retornar la palabra
                         hideLabel(msgin)
                         hideLabel(wordbox)
                         return word
                         break
                     
-                except:
+                except: #si escribe algo sin sentido
                     msga = makeLabel( "Lo digitado no es válido", 35, 50, 125,"white","Agency FB", "black")
                     showLabel(msga)
                     pause(2500)
                     hideLabel(msga)
                     
+                #Esconder mensajes
                 hideLabel(msgin)
                 hideLabel(wordbox)
             
@@ -59,6 +60,7 @@ def setup_mult():
     
     screen = screenSize(800 , 800)
     
+    #Usuario 1
     username1 = makeLabel("Nombre de Usuario del jugador 1", 50, 10, 10, "white", "Agency FB", "black")
     usbox1 = makeTextBox(550, 25, 150, 0, "", 0, 24)
     showLabel (username1)
@@ -67,6 +69,7 @@ def setup_mult():
     hideLabel(username1)
     hideLabel(usbox1)
     
+    #Usuario 2    
     username2 = makeLabel("Nombre de Usuario del jugador 2", 50, 10, 10, "white", "Agency FB", "black")
     usbox2 = makeTextBox(550, 25, 150, 0, "", 0, 24)
     showLabel (username2)
@@ -77,11 +80,13 @@ def setup_mult():
     
     pause(1000)
     
+    #Bienvenida
     bienvenida = makeLabel("Hola " +user1+ " y " +user2+ " Juguemos ahorcado!", 35, 50, 25,"white","Agency FB", "black")
     showLabel(bienvenida)
     
     pause(1000)
     
+    #Orden en el que tienen que adivinar    
     orden = makeLabel("Primero va a adivinar  " + user1 + "  la palabra que escoja  " + user2, 35, 50, 100,"white","Agency FB", "black")
     showLabel(orden)
      
@@ -96,6 +101,7 @@ def setup_mult():
     msgturnos1 = makeLabel( "Escojan un nivel de dificultad (1 , 2 o 3)", 35, 50, 175,"white","Agency FB", "black")
     showLabel(msgturnos1)
     
+    #número de turnos según el nivel de dificultad    
     while True:
         boxdif=makeTextBox(500, 175, 25, 0, "", 1, 24)
         #Mostrar la caja de texto
@@ -106,7 +112,7 @@ def setup_mult():
             
             niveldif=int(niveldif)
             
-            if niveldif == 3:
+            if niveldif == 3: 
                 turnos = 6
                 msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 250, "white", "Agency FB", "black")
                 showLabel(msgturnos)
@@ -147,9 +153,10 @@ def setup_mult():
             hideLabel(msgerror)
             hideLabel(boxdif)
             
-    #ciclo while para determinar el nivel de dificultad y por ende la longitud de las palabras a adivinar
+   
     hideLabel(msgturnos1)
     
+     #ciclo while para determinar la longitud de las palabras a adivinar
     while True: 
         
         msgnivel= makeLabel("Escojan la longitud de la palabra (entre 3 y 10): ", 35, 50, 175,"white","Agency FB", "black")
@@ -337,4 +344,4 @@ def setup_mult():
             
 # Cerrar la ventana de turtle
     endWait()
-    dibujo.Tortuga.fin()   
+    dibujo.Tortuga.fin()
