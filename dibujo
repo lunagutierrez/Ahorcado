@@ -209,11 +209,12 @@ class Tortuga:
         turtle.mainloop()
         turtle.done()
         turtle.bye()
+        turtle.Terminator()
         
         
 class Mistakes(Tortuga):
 #clase que define los pasos a seguir del dibujo de acuerdo a los errores cometidos que se evidencian en los turnos remanentes
-    def draw(t,n):
+    def draw3(t,n):
         if n == 5:
             Tortuga.horca(t)
             Tortuga.cabeza(t)
@@ -237,5 +238,81 @@ class Mistakes(Tortuga):
             Tortuga.ojo2(t)
             Tortuga.boca(t)
             Tortuga.lengua(t)
-            time.sleep(8)
+            time.sleep(4.5)
             Tortuga.borrar(t)
+            
+    def draw2(t,n):
+            if n == 8:
+                Tortuga.horca(t)
+                Tortuga.cabeza(t)
+            elif n == 7:
+                Tortuga.tronco(t)
+            elif n == 6:
+                Tortuga.pierna1(t)
+                Tortuga.pie1(t)
+            elif n == 5:
+                Tortuga.pierna2(t) 
+                Tortuga.pie2(t)
+            elif n == 4:
+                Tortuga.brazo1(t)
+                Tortuga.mano1(t)
+            elif n== 3:
+                Tortuga.brazo2(t)
+                Tortuga.mano2(t)
+            elif n== 2:
+                Tortuga.cabello(t)
+            elif n== 1:
+                Tortuga.ojo1(t)
+                Tortuga.ojo2(t)
+            #Cuando el jugador pierde    
+            elif n == 0:
+                Tortuga.boca(t)
+                Tortuga.lengua(t)
+                time.sleep(4.5)
+                Tortuga.borrar(t)
+                
+    def draw1(t,n):
+            if n == 11:
+                Tortuga.horca(t)
+                
+            elif n == 10:
+                Tortuga.cabeza(t)
+            elif n == 9:
+                Tortuga.tronco(t)
+                
+            elif n == 8:
+                Tortuga.pierna1(t)
+                Tortuga.pie1(t)
+                
+            elif n == 7:
+                Tortuga.pierna2(t) 
+                Tortuga.pie2(t)
+                
+                
+            elif n== 6:
+                Tortuga.brazo1(t)
+                Tortuga.mano1(t)
+                
+            elif n== 5:
+                Tortuga.brazo2(t)
+                Tortuga.mano2(t)
+                
+                
+            elif n== 4:
+                Tortuga.cabello(t)
+                
+            elif n== 3:
+                Tortuga.ojo1(t)
+                
+            elif n== 2:
+                Tortuga.ojo2(t)
+                
+            elif n== 1:
+                Tortuga.boca(t)
+                
+            #Cuando el jugador pierde    
+            elif n == 0:
+                
+                Tortuga.lengua(t)
+                time.sleep(4.5)
+                Tortuga.borrar(t)
