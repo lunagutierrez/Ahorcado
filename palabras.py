@@ -4,9 +4,6 @@ Documento que contiene las listas de palabras y las divide por niveles para el j
 """
 #importar random para elegir una palabra al azar de la lista
 
-
-#importar random para elegir una palabra al azar de la lista
-
 import random
 import pygame
 from pygame_functions import *
@@ -29,179 +26,180 @@ class Nivel:
     import random
     def __str__(): #constructor de la clase 
         while True:
-            msgnivel= makeLabel("Escoge un nivel de dificultad entre 3 y 10: ", 35, 50, 300,"white","Agency FB", "black")
+            msgnivel= makeLabel("Escoge la longitud de la palabra (entre 3 y 10): ", 35, 50, 300,"white","Agency FB", "black")
             showLabel(msgnivel)
             
-            box2=makeTextBox(510, 300, 30, 0, "", 1, 24)
+            box2=makeTextBox(567, 300, 30, 0, "", 1, 24)
             showTextBox(box2)
             
-            lenw = int(textBoxInput(box2)) #la longitud de la palabra a adivinar depende del nivel de dificultad escogido
+            lenw = textBoxInput(box2)#la longitud de la palabra a adivinar depende del nivel de dificultad escogido
             #se examina cada uno de los casos posibles y se retorna una palabra de la longitud escogida
-            
-            if lenw == 3:
-                
-                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
-                showLabel(msglen)
-                
-                pause(1000)
-                
-                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
-                showLabel(msgcomenzar)
-                
-                pause(1000)
-                
-                hideLabel(msglen)
-                hideLabel(msgcomenzar)
-                hideLabel(msgnivel)
-                hideLabel(box2)
-                
-                return random.choice(pal3)
-                break
-                        
-            elif lenw == 4:
-                
-                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
-                showLabel(msglen)
-                
-                pause(1000)
-                
-                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
-                showLabel(msgcomenzar)
-                
-                pause(1000)
-                
-                hideLabel(msglen)
-                hideLabel(msgcomenzar)
-                hideLabel(msgnivel)
-                hideLabel(box2)
-                
-                return random.choice(pal4)
-                break
+            if not lenw.isalpha():
+                lenw=int(lenw)
+                if lenw == 3:
                     
-            elif lenw == 5:
-                
-                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
-                showLabel(msglen)
-                
-                pause(1000)
-                
-                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
-                showLabel(msgcomenzar)
-                
-                pause(1000)
-                
-                hideLabel(msglen)
-                hideLabel(msgcomenzar)
-                hideLabel(msgnivel)
-                hideLabel(box2)
-                
-                return random.choice(pal5)
-                
-                break
-                        
-            elif lenw == 6:
-                
-                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
-                showLabel(msglen)
-                
-                pause(1000)
-                
-                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
-                showLabel(msgcomenzar)
-                
-                pause(1000)
-                
-                hideLabel(msglen)
-                hideLabel(msgcomenzar)
-                hideLabel(msgnivel)
-                hideLabel(box2)
-                
-                return random.choice(pal6)
-                
-                break
-                        
-            elif lenw == 7:
-                
-                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
-                showLabel(msglen)
-                
-                pause(1000)
-                
-                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
-                showLabel(msgcomenzar)
-                
-                pause(1000)
-                
-                hideLabel(msglen)
-                hideLabel(msgcomenzar)
-                hideLabel(msgnivel)
-                hideLabel(box2)
-                
-                return random.choice(pal7)
-                
-                break
-                        
-            elif lenw ==8:
-                
-                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
-                showLabel(msglen)
-                
-                pause(1000)
-                
-                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
-                showLabel(msgcomenzar)
-                
-                pause(1000)
-                
-                hideLabel(msglen)
-                hideLabel(msgcomenzar)
-                hideLabel(msgnivel)
-                hideLabel(box2)
-                
-                return random.choice(pal8)
-                
-                break            
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    showLabel(msglen)
                     
-            elif lenw ==9:
-                
-                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
-                showLabel(msglen)
-                
-                pause(1000)
-                
-                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
-                showLabel(msgcomenzar)
-                
-                pause(1000)
-                
-                hideLabel(msglen)
-                hideLabel(msgcomenzar)
-                hideLabel(msgnivel)
-                hideLabel(box2)
-                
-                return random.choice(pal9)
-                break
+                    pause(1000)
                     
-            elif lenw ==10:
-                
-                msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
-                showLabel(msglen)
-                
-                pause(1000)
-                
-                msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
-                showLabel(msgcomenzar)
-                
-                pause(1000)
-                
-                hideLabel(msglen)
-                hideLabel(msgcomenzar)
-                hideLabel(msgnivel)
-                hideLabel(box2)
-                
-                return random.choice(pal10)
-                break
-                
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    showLabel(msgcomenzar)
+                    
+                    pause(1000)
+                    
+                    hideLabel(msglen)
+                    hideLabel(msgcomenzar)
+                    hideLabel(msgnivel)
+                    hideLabel(box2)
+                    
+                    return random.choice(pal3)
+                    break
+                            
+                elif lenw == 4:
+                    
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    showLabel(msglen)
+                    
+                    pause(1000)
+                    
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    showLabel(msgcomenzar)
+                    
+                    pause(1000)
+                    
+                    hideLabel(msglen)
+                    hideLabel(msgcomenzar)
+                    hideLabel(msgnivel)
+                    hideLabel(box2)
+                    
+                    return random.choice(pal4)
+                    break
+                        
+                elif lenw == 5:
+                    
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    showLabel(msglen)
+                    
+                    pause(1000)
+                    
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    showLabel(msgcomenzar)
+                    
+                    pause(1000)
+                    
+                    hideLabel(msglen)
+                    hideLabel(msgcomenzar)
+                    hideLabel(msgnivel)
+                    hideLabel(box2)
+                    
+                    return random.choice(pal5)
+                    
+                    break
+                            
+                elif lenw == 6:
+                    
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    showLabel(msglen)
+                    
+                    pause(1000)
+                    
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    showLabel(msgcomenzar)
+                    
+                    pause(1000)
+                    
+                    hideLabel(msglen)
+                    hideLabel(msgcomenzar)
+                    hideLabel(msgnivel)
+                    hideLabel(box2)
+                    
+                    return random.choice(pal6)
+                    
+                    break
+                            
+                elif lenw == 7:
+                    
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    showLabel(msglen)
+                    
+                    pause(1000)
+                    
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    showLabel(msgcomenzar)
+                    
+                    pause(1000)
+                    
+                    hideLabel(msglen)
+                    hideLabel(msgcomenzar)
+                    hideLabel(msgnivel)
+                    hideLabel(box2)
+                    
+                    return random.choice(pal7)
+                    
+                    break
+                            
+                elif lenw ==8:
+                    
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    showLabel(msglen)
+                    
+                    pause(1000)
+                    
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    showLabel(msgcomenzar)
+                    
+                    pause(1000)
+                    
+                    hideLabel(msglen)
+                    hideLabel(msgcomenzar)
+                    hideLabel(msgnivel)
+                    hideLabel(box2)
+                    
+                    return random.choice(pal8)
+                    
+                    break            
+                        
+                elif lenw ==9:
+                    
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    showLabel(msglen)
+                    
+                    pause(1000)
+                    
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    showLabel(msgcomenzar)
+                    
+                    pause(1000)
+                    
+                    hideLabel(msglen)
+                    hideLabel(msgcomenzar)
+                    hideLabel(msgnivel)
+                    hideLabel(box2)
+                    
+                    return random.choice(pal9)
+                    break
+                        
+                elif lenw ==10:
+                    
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    showLabel(msglen)
+                    
+                    pause(1000)
+                    
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    showLabel(msgcomenzar)
+                    
+                    pause(1000)
+                    
+                    hideLabel(msglen)
+                    hideLabel(msgcomenzar)
+                    hideLabel(msgnivel)
+                    hideLabel(box2)
+                    
+                    return random.choice(pal10)
+                    break
+                    
             else:
                 msg= makeLabel('{0} no es un entero entre 3 y 10'.format(lenw) , 35, 50, 300,"white","Agency FB", "black")
                 showLabel(msg)
@@ -209,4 +207,6 @@ class Nivel:
                 pause(2000)
                 
                 hideLabel(msg)
-             
+            
+            hideLabel(msgnivel)
+            hideLabel(box2)
