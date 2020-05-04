@@ -2,8 +2,6 @@
 """
 Documento que contiene las listas de palabras y las divide por niveles para el juego individual
 """
-#importar random para elegir una palabra al azar de la lista
-
 import random
 import pygame
 from pygame_functions import *
@@ -38,12 +36,12 @@ class Nivel:
                 lenw=int(lenw)
                 if lenw == 3:
                     
-                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 375,"white","Agency FB", "black")
                     showLabel(msglen)
                     
                     pause(1000)
                     
-                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 450,"white","Agency FB", "black")
                     showLabel(msgcomenzar)
                     
                     pause(1000)
@@ -58,12 +56,12 @@ class Nivel:
                             
                 elif lenw == 4:
                     
-                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 375,"white","Agency FB", "black")
                     showLabel(msglen)
                     
                     pause(1000)
                     
-                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 450,"white","Agency FB", "black")
                     showLabel(msgcomenzar)
                     
                     pause(1000)
@@ -78,12 +76,12 @@ class Nivel:
                         
                 elif lenw == 5:
                     
-                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 375,"white","Agency FB", "black")
                     showLabel(msglen)
                     
                     pause(1000)
                     
-                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 450,"white","Agency FB", "black")
                     showLabel(msgcomenzar)
                     
                     pause(1000)
@@ -99,12 +97,12 @@ class Nivel:
                             
                 elif lenw == 6:
                     
-                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 375,"white","Agency FB", "black")
                     showLabel(msglen)
                     
                     pause(1000)
                     
-                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 450,"white","Agency FB", "black")
                     showLabel(msgcomenzar)
                     
                     pause(1000)
@@ -120,12 +118,12 @@ class Nivel:
                             
                 elif lenw == 7:
                     
-                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 375,"white","Agency FB", "black")
                     showLabel(msglen)
                     
                     pause(1000)
                     
-                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 450,"white","Agency FB", "black")
                     showLabel(msgcomenzar)
                     
                     pause(1000)
@@ -141,12 +139,12 @@ class Nivel:
                             
                 elif lenw ==8:
                     
-                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 375,"white","Agency FB", "black")
                     showLabel(msglen)
                     
                     pause(1000)
                     
-                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 450,"white","Agency FB", "black")
                     showLabel(msgcomenzar)
                     
                     pause(1000)
@@ -162,12 +160,12 @@ class Nivel:
                         
                 elif lenw ==9:
                     
-                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 375,"white","Agency FB", "black")
                     showLabel(msglen)
                     
                     pause(1000)
                     
-                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 450,"white","Agency FB", "black")
                     showLabel(msgcomenzar)
                     
                     pause(1000)
@@ -182,12 +180,12 @@ class Nivel:
                         
                 elif lenw ==10:
                     
-                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                    msglen= makeLabel("La palabra que tienes que adivinar tiene {0} letras".format(lenw) , 35, 50, 375,"white","Agency FB", "black")
                     showLabel(msglen)
                     
                     pause(1000)
                     
-                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 350,"white","Agency FB", "black")
+                    msgcomenzar= makeLabel("Ya puedes comenzar a adivinar" , 35, 50, 450,"white","Agency FB", "black")
                     showLabel(msgcomenzar)
                     
                     pause(1000)
@@ -201,7 +199,7 @@ class Nivel:
                     break
                     
             else:
-                msg= makeLabel('{0} no es un entero entre 3 y 10'.format(lenw) , 35, 50, 300,"white","Agency FB", "black")
+                msg= makeLabel('{0} no es un entero entre 3 y 10'.format(lenw) , 35, 50, 450,"white","Agency FB", "black")
                 showLabel(msg)
                 
                 pause(2000)
@@ -210,3 +208,11 @@ class Nivel:
             
             hideLabel(msgnivel)
             hideLabel(box2)
+            
+            
+             
+            
+    
+        
+
+
