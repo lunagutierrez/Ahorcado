@@ -3,6 +3,8 @@
 Created on Sun Mar 29 18:00:26 2020
 @author: lunag
 """
+#importar las librerías necesarias
+
 import time
 import palabras
 import turtle
@@ -36,131 +38,378 @@ class Adivinar:
             time.sleep(1)
             x= x + 55
         
-        
-        
-        while turnos > 0: 
-            # adivine una letra
-                                            
-                box3=makeTextBox(250, 50, 35, 0, "", 1, 24)
-                showTextBox(box3)
-                
-                guess=textBoxInput(box3).lower()
-                
-                # de guess a guesses
-                guesses += guess
-                
-                                
-            # contados desde 0
-                failed = 0             
-                posx=100
-            # para cada letra en la palabra
-                for char in word: 
-                                                        
-            # mirar si la letra esta en lo adivinado
-                    if char in guesses:    
-            
-                # imprimir el caracter
-                        msgchar = makeLabel(char, 60, posx, 200, "white", "Agency FB", "black")
-                        showLabel(msgchar)
-                        time.sleep(1)
-                        
-                                            
-                    else:
-            
-                # si no imprimir - por cada uno que no haya sido adivinado (lo hace en una misma linea)
-                        msgnochar = makeLabel("-", 60, posx, 200, "white", "Agency FB", "black")
-                        showLabel(msgnochar)
-                        time.sleep(1)
-                        
-                # e incrementar el numero de fallas
-                        failed += 1
+        if turnos == 12:
+                           
+            while turnos > 0: 
+                # adivine una letra
+                                                
+                    box3=makeTextBox(250, 50, 35, 0, "", 1, 24)
+                    showTextBox(box3)
                     
-                    posx= posx + 55
-        
-            # si no hay fallas
+                    guess=textBoxInput(box3).lower()
+                    
+                    # de guess a guesses
+                    guesses += guess
+                    
+                                    
+                # contados desde 0
+                    failed = 0             
+                    posx=100
+                # para cada letra en la palabra
+                    for char in word: 
+                                                            
+                # mirar si la letra esta en lo adivinado
+                        if char in guesses:    
                 
-            # Gano!
-                if failed == 0:
-                    hideLabel(msgletra)
-                    hideLabel(msgadivinado)
-                    black= makeLabel("                                              " ,40, 50, 450, "black","Agency FB", "black")
-                    black1= makeLabel("                                              " ,40, 50, 50, "black","Agency FB", "black")
-                    black2= makeLabel("                                              " ,80, 50, 200, "black","Agency FB", "black")
-                    showLabel(black)
-                    showLabel(black1)
-                    showLabel(black2)
-                    msgwin = makeLabel("¡Adivináste!", 60, 300, 200, "white", "Agency FB", "black")
-                    showLabel(msgwin)
-                    time.sleep(3.3)
-                    black3= makeLabel("                                           ", 70, 290, 200, "white", "Agency FB", "black")
-                    showLabel(black3)
-                    break
-            # Cerrar la ventana de turtle
-            # salir
+                    # imprimir el caracter
+                            msgchar = makeLabel(char, 60, posx, 200, "white", "Agency FB", "black")
+                            showLabel(msgchar)
+                            time.sleep(1)
+                            
+                                                
+                        else:
                 
+                    # si no imprimir - por cada uno que no haya sido adivinado (lo hace en una misma linea)
+                            msgnochar = makeLabel("-", 60, posx, 200, "white", "Agency FB", "black")
+                            showLabel(msgnochar)
+                            time.sleep(1)
+                            
+                    # e incrementar el numero de fallas
+                            failed += 1
+                        
+                        posx= posx + 55
             
-            #para cuando                     
-                alreadyGuessed = False #falso por default para que cuando sea verdadero retorne el mensaje
-                
-                for w in listGuesses: #compara lo adivinado con cada uno de los caracteres adivinados
-                    if w == guess:
-                        alreadyGuessed = True
+                # si no hay fallas
+                    
+                # Gano!
+                    if failed == 0:
+                        hideLabel(msgletra)
+                        hideLabel(msgadivinado)
+                        black= makeLabel("                                                                                " ,40, 50, 450, "black","Agency FB", "black")
+                        black1= makeLabel("                                                                               " ,40, 50, 50, "black","Agency FB", "black")
+                        black2= makeLabel("                                                                               " ,80, 50, 200, "black","Agency FB", "black")
+                        showLabel(black)
+                        showLabel(black1)
+                        showLabel(black2)
+                        msgwin = makeLabel("¡Adivináste!", 60, 300, 200, "white", "Agency FB", "black")
+                        showLabel(msgwin)
+                        time.sleep(3.3)
+                        black3= makeLabel("                                                                                 ", 70, 290, 200, "white", "Agency FB", "black")
+                        showLabel(black3)
                         break
-                if alreadyGuessed:
-                    msgerr= makeLabel(" Ya adivinaste esta letra. Inténtalo de nuevo. ", 35, 50, 600,"white","Agency FB", "black")
-                    showLabel(msgerr)
-                    pause(1500)
-                    hideLabel(msgerr)
-                    continue    #comienza el ciclo desde el comienzo y no se penaliza tomanto turnos
-                else:
-                    listGuesses.append(guess) #añade a la lista el caracter adivinado
+                # Cerrar la ventana de turtle
+                # salir
                     
-                msguesses= makeLabel(str(listGuesses) , 35, 50, 450,"white","Agency FB", "black")
-                showLabel(msguesses)
+                
+                #para cuando                     
+                    alreadyGuessed = False #falso por default para que cuando sea verdadero retorne el mensaje
                     
-            # si guess no esta en palabra
-                if guess not in word:  
-                        
-                    if not guess.isalpha():
-                        msgerr= makeLabel(" Debes adivinar una letra. ", 35, 50, 600,"white","Agency FB", "black")
+                    for w in listGuesses: #compara lo adivinado con cada uno de los caracteres adivinados
+                        if w == guess:
+                            alreadyGuessed = True
+                            break
+                    if alreadyGuessed:
+                        msgerr= makeLabel(" Ya adivinaste esta letra. Inténtalo de nuevo. ", 35, 50, 600,"white","Agency FB", "black")
                         showLabel(msgerr)
                         pause(1500)
                         hideLabel(msgerr)
+                        continue    #comienza el ciclo desde el comienzo y no se penaliza tomanto turnos
+                    else:
+                        listGuesses.append(guess) #añade a la lista el caracter adivinado
                         
-                    if guess.isalpha():
-             # turnos se disminuyen
-                        turnos -= 1        
-         
-            # imprima se equivoco
-                        msgerr= makeLabel("Te equivocaste. Ahora tienes  " + str(turnos) + '  intentos', 35, 50, 600,"white","Agency FB", "black")
-                        showLabel(msgerr)
-                        pause(2500)
-                        hideLabel(msgerr)
-    
-         
-            # turnos que quedan
-            #Dibujo del ahorcado según los intentos que quedan
-                        dibujo.Mistakes.draw(t,turnos)
+                    msguesses= makeLabel(str(listGuesses) , 35, 50, 450,"white","Agency FB", "black")
+                    showLabel(msguesses)
                         
-            #Cuando el jugador pierde
-                        
-                        if turnos ==0:
-                            hideLabel(msgletra)
-                            hideLabel(msgadivinado)
-                            black= makeLabel("                                              " ,40, 50, 450, "black","Agency FB", "black")
-                            black1= makeLabel("                                              " ,40, 50, 50, "black","Agency FB", "black")
-                            black2= makeLabel("                                              " ,80, 50, 200, "black","Agency FB", "black")
-                            showLabel(black)
-                            showLabel(black1)
-                            showLabel(black2)
-                            msgerr= makeLabel("¡Ahorcado!   La palabra era " +word , 60, 100, 200,"white","Agency FB", "black")
+                # si guess no esta en palabra
+                    if guess not in word:  
+                            
+                        if not guess.isalpha():
+                            msgerr= makeLabel(" Debes adivinar una letra. ", 35, 50, 600,"white","Agency FB", "black")
                             showLabel(msgerr)
-                            pause(3000)
-                            black3= makeLabel("                                                                       ", 70, 90, 200, "white", "Agency FB", "black")
-                            showLabel(black3)
-                            break
+                            pause(1500)
+                            hideLabel(msgerr)
+                            
+                        if guess.isalpha():
+                 # turnos se disminuyen
+                            turnos -= 1        
+             
+                # imprima se equivoco
+                            msgerr= makeLabel("Te equivocaste. Ahora tienes  " + str(turnos) + '  intentos', 35, 50, 600,"white","Agency FB", "black")
+                            showLabel(msgerr)
+                            pause(2500)
+                            hideLabel(msgerr)
+        
+             
+                # turnos que quedan
+                #Dibujo del ahorcado según los intentos que quedan
+                            dibujo.Mistakes.draw1(t,turnos)
+                            
+                #Cuando el jugador pierde
+                            
+                            if turnos ==0:
+                                hideLabel(msgletra)
+                                hideLabel(msgadivinado)
+                                black= makeLabel("                                                                                        " ,40, 50, 450, "black","Agency FB", "black")
+                                black1= makeLabel("                                                                                       "  ,40, 50, 50, "black","Agency FB", "black")
+                                black2= makeLabel("                                                                                       " ,80, 50, 200, "black","Agency FB", "black")
+                                showLabel(black)
+                                showLabel(black1)
+                                showLabel(black2)
+                                msgerr= makeLabel("¡Ahorcado! La palabra era " +word , 45, 100, 200,"white","Agency FB", "black")
+                                showLabel(msgerr)
+                                pause(3000)
+                                black3= makeLabel("                                                                                        ", 70, 90, 200, "white", "Agency FB", "black")
+                                showLabel(black3)
+                                break
                           
-                                
+        elif turnos == 9:
+            
+            while turnos > 0: 
+                # adivine una letra
+                                                
+                    box3=makeTextBox(250, 50, 35, 0, "", 1, 24)
+                    showTextBox(box3)
+                    
+                    guess=textBoxInput(box3).lower()
+                    
+                    # de guess a guesses
+                    guesses += guess
+                    
+                                    
+                # contados desde 0
+                    failed = 0             
+                    posx=100
+                # para cada letra en la palabra
+                    for char in word: 
+                                                            
+                # mirar si la letra esta en lo adivinado
+                        if char in guesses:    
+                
+                    # imprimir el caracter
+                            msgchar = makeLabel(char, 60, posx, 200, "white", "Agency FB", "black")
+                            showLabel(msgchar)
+                            time.sleep(1)
+                            
+                                                
+                        else:
+                
+                    # si no imprimir - por cada uno que no haya sido adivinado (lo hace en una misma linea)
+                            msgnochar = makeLabel("-", 60, posx, 200, "white", "Agency FB", "black")
+                            showLabel(msgnochar)
+                            time.sleep(1)
+                            
+                    # e incrementar el numero de fallas
+                            failed += 1
+                        
+                        posx= posx + 55
+            
+                # si no hay fallas
+                    
+                # Gano!
+                    if failed == 0:
+                        hideLabel(msgletra)
+                        hideLabel(msgadivinado)
+                        black= makeLabel("                                              " ,40, 50, 450, "black","Agency FB", "black")
+                        black1= makeLabel("                                              " ,40, 50, 50, "black","Agency FB", "black")
+                        black2= makeLabel("                                              " ,80, 50, 200, "black","Agency FB", "black")
+                        showLabel(black)
+                        showLabel(black1)
+                        showLabel(black2)
+                        msgwin = makeLabel("¡Adivináste!", 60, 300, 200, "white", "Agency FB", "black")
+                        showLabel(msgwin)
+                        time.sleep(3.3)
+                        black3= makeLabel("                                           ", 70, 290, 200, "white", "Agency FB", "black")
+                        showLabel(black3)
+                        break
+                # Cerrar la ventana de turtle
+                # salir
+                    
+                
+                #para cuando                     
+                    alreadyGuessed = False #falso por default para que cuando sea verdadero retorne el mensaje
+                    
+                    for w in listGuesses: #compara lo adivinado con cada uno de los caracteres adivinados
+                        if w == guess:
+                            alreadyGuessed = True
+                            break
+                    if alreadyGuessed:
+                        msgerr= makeLabel(" Ya adivinaste esta letra. Inténtalo de nuevo. ", 35, 50, 600,"white","Agency FB", "black")
+                        showLabel(msgerr)
+                        pause(1500)
+                        hideLabel(msgerr)
+                        continue    #comienza el ciclo desde el comienzo y no se penaliza tomanto turnos
+                    else:
+                        listGuesses.append(guess) #añade a la lista el caracter adivinado
+                        
+                    msguesses= makeLabel(str(listGuesses) , 35, 50, 450,"white","Agency FB", "black")
+                    showLabel(msguesses)
+                        
+                # si guess no esta en palabra
+                    if guess not in word:  
+                            
+                        if not guess.isalpha():
+                            msgerr= makeLabel(" Debes adivinar una letra. ", 35, 50, 600,"white","Agency FB", "black")
+                            showLabel(msgerr)
+                            pause(1500)
+                            hideLabel(msgerr)
+                            
+                        if guess.isalpha():
+                 # turnos se disminuyen
+                            turnos -= 1        
+             
+                # imprima se equivoco
+                            msgerr= makeLabel("Te equivocaste. Ahora tienes  " + str(turnos) + '  intentos', 35, 50, 600,"white","Agency FB", "black")
+                            showLabel(msgerr)
+                            pause(2500)
+                            hideLabel(msgerr)
+        
+             
+                # turnos que quedan
+                #Dibujo del ahorcado según los intentos que quedan
+                            dibujo.Mistakes.draw2(t,turnos)
+                            
+                #Cuando el jugador pierde
+                            
+                            if turnos ==0:
+                                hideLabel(msgletra)
+                                hideLabel(msgadivinado)
+                                black= makeLabel("                                              " ,40, 50, 450, "black","Agency FB", "black")
+                                black1= makeLabel("                                              " ,40, 50, 50, "black","Agency FB", "black")
+                                black2= makeLabel("                                              " ,80, 50, 200, "black","Agency FB", "black")
+                                showLabel(black)
+                                showLabel(black1)
+                                showLabel(black2)
+                                msgerr= makeLabel("¡Ahorcado!   La palabra era " +word , 60, 100, 200,"white","Agency FB", "black")
+                                showLabel(msgerr)
+                                pause(3000)
+                                black3= makeLabel("                                                                       ", 70, 90, 200, "white", "Agency FB", "black")
+                                showLabel(black3)
+                                break
+        
+        elif turnos == 6:
+            while turnos > 0: 
+                # adivine una letra
+                                                
+                    box3=makeTextBox(250, 50, 35, 0, "", 1, 24)
+                    showTextBox(box3)
+                    
+                    guess=textBoxInput(box3).lower()
+                    
+                    # de guess a guesses
+                    guesses += guess
+                    
+                                    
+                # contados desde 0
+                    failed = 0             
+                    posx=100
+                # para cada letra en la palabra
+                    for char in word: 
+                                                            
+                # mirar si la letra esta en lo adivinado
+                        if char in guesses:    
+                
+                    # imprimir el caracter
+                            msgchar = makeLabel(char, 60, posx, 200, "white", "Agency FB", "black")
+                            showLabel(msgchar)
+                            time.sleep(1)
+                            
+                                                
+                        else:
+                
+                    # si no imprimir - por cada uno que no haya sido adivinado (lo hace en una misma linea)
+                            msgnochar = makeLabel("-", 60, posx, 200, "white", "Agency FB", "black")
+                            showLabel(msgnochar)
+                            time.sleep(1)
+                            
+                    # e incrementar el numero de fallas
+                            failed += 1
+                        
+                        posx= posx + 55
+            
+                # si no hay fallas
+                    
+                # Gano!
+                    if failed == 0:
+                        hideLabel(msgletra)
+                        hideLabel(msgadivinado)
+                        black= makeLabel("                                                                      " ,40, 50, 450, "black","Agency FB", "black")
+                        black1= makeLabel("                                                                     " ,40, 50, 50, "black","Agency FB", "black")
+                        black2= makeLabel("                                                                     " ,80, 50, 200, "black","Agency FB", "black")
+                        showLabel(black)
+                        showLabel(black1)
+                        showLabel(black2)
+                        msgwin = makeLabel("¡Adivináste!", 60, 300, 200, "white", "Agency FB", "black")
+                        showLabel(msgwin)
+                        time.sleep(3.3)
+                        black3= makeLabel("                                           ", 70, 290, 200, "white", "Agency FB", "black")
+                        showLabel(black3)
+                        break
+                # Cerrar la ventana de turtle
+                # salir
+                    
+                
+                #para cuando                     
+                    alreadyGuessed = False #falso por default para que cuando sea verdadero retorne el mensaje
+                    
+                    for w in listGuesses: #compara lo adivinado con cada uno de los caracteres adivinados
+                        if w == guess:
+                            alreadyGuessed = True
+                            break
+                    if alreadyGuessed:
+                        msgerr= makeLabel(" Ya adivinaste esta letra. Inténtalo de nuevo. ", 35, 50, 600,"white","Agency FB", "black")
+                        showLabel(msgerr)
+                        pause(1500)
+                        hideLabel(msgerr)
+                        continue    #comienza el ciclo desde el comienzo y no se penaliza tomanto turnos
+                    else:
+                        listGuesses.append(guess) #añade a la lista el caracter adivinado
+                        
+                    msguesses= makeLabel(str(listGuesses) , 35, 50, 450,"white","Agency FB", "black")
+                    showLabel(msguesses)
+                        
+                # si guess no esta en palabra
+                    if guess not in word:  
+                            
+                        if not guess.isalpha():
+                            msgerr= makeLabel(" Debes adivinar una letra. ", 35, 50, 600,"white","Agency FB", "black")
+                            showLabel(msgerr)
+                            pause(1500)
+                            hideLabel(msgerr)
+                            
+                        if guess.isalpha():
+                 # turnos se disminuyen
+                            turnos -= 1        
+             
+                # imprima se equivoco
+                            msgerr= makeLabel("Te equivocaste. Ahora tienes  " + str(turnos) + '  intentos', 35, 50, 600,"white","Agency FB", "black")
+                            showLabel(msgerr)
+                            pause(2500)
+                            hideLabel(msgerr)
+        
+             
+                # turnos que quedan
+                #Dibujo del ahorcado según los intentos que quedan
+                            dibujo.Mistakes.draw3(t,turnos)
+                            
+                #Cuando el jugador pierde
+                            
+                            if turnos ==0:
+                                hideLabel(msgletra)
+                                hideLabel(msgadivinado)
+                                black= makeLabel("                                                                      " ,40, 50, 450, "black","Agency FB", "black")
+                                black1= makeLabel("                                                                     " ,40, 50, 50, "black","Agency FB", "black")
+                                black2= makeLabel("                                                                     " ,80, 50, 200, "black","Agency FB", "black")
+                                showLabel(black)
+                                showLabel(black1)
+                                showLabel(black2)
+                                msgerr= makeLabel("¡Ahorcado!   La palabra era " +word , 60, 100, 200,"white","Agency FB", "black")
+                                showLabel(msgerr)
+                                pause(3000)
+                                black3= makeLabel("                                                                       ", 70, 90, 200, "white", "Agency FB", "black")
+                                showLabel(black3)
+                                break
+            
+                        
         dibujo.Tortuga.borrar(t)
         return turnos
         
@@ -187,27 +436,74 @@ def setup_ind():
     bienvenida= makeLabel("Hola,   " + user + "   Juguemos ahorcado!", 35, 50, 50,"white","Agency FB", "black")
     showLabel(bienvenida)
     
-    turnos = 6
+    turnos = 0
     
     pause(1000)
     
-    msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 100, "white", "Agency FB", "black")
-    showLabel(msgturnos)
-    
+    msgdif = makeLabel("Escoge un nivel de dificultad (1 , 2 o 3)", 35, 50, 100, "white", "Agency FB", "black")
+    showLabel(msgdif)
     pause(1000)
     
-    msgnivel = makeLabel("Ahora debes escoger un nivel de dificultad", 35, 50, 200, "white", "Agency FB", "black")
-    showLabel(msgnivel)
     
-    pause(1000)
+       
     
+    while True:
+        boxdif=makeTextBox(500, 100, 25, 0, "", 1, 24)
+        #Mostrar la caja de texto
+        showTextBox(boxdif)
+        niveldif = textBoxInput(boxdif) 
+        
+        if not niveldif.isalpha():
+            
+            niveldif=int(niveldif)
+            
+            if niveldif == 3:
+                turnos = 6
+                msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 200, "white", "Agency FB", "black")
+                showLabel(msgturnos)
+                pause(2000)
+                hideLabel(boxdif)
+                break
+                
+            elif niveldif == 2:
+                turnos = 9
+                msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 200, "white", "Agency FB", "black")
+                showLabel(msgturnos)
+                pause(2000)
+                hideLabel(boxdif)
+                break
+            
+            elif niveldif == 1:
+                turnos = 12
+                msgturnos = makeLabel("Tienes  " + str(turnos) + "  intentos", 35, 50, 200, "white", "Agency FB", "black")
+                showLabel(msgturnos)
+                pause(2000)
+                hideLabel(boxdif)
+                break
+            
+            else:
+                msgerror = makeLabel("{0} no es un entero entre 1 y 3".format(niveldif), 35, 50, 200, "white", "Agency FB", "black")
+                showLabel(msgerror)
+                pause(1000)
+                hideLabel(msgerror)
+                hideLabel(boxdif)
+                
+        else:
+            msgerror = makeLabel("{0} no es un entero entre 1 y 3".format(niveldif), 35, 50, 200, "white", "Agency FB", "black")
+            showLabel(msgerror)
+            pause(2000)
+            hideLabel(msgerror)
+            hideLabel(boxdif)
+        
+    
+        
     #establecemos la palabra
     word = palabras.Nivel.__str__()
     
     hideLabel(bienvenida)
+    hideLabel(msgdif)
     hideLabel(msgturnos)
-    hideLabel(msgnivel)
-    
+    hideLabel(boxdif)
         
     
     pause(1000)
@@ -215,9 +511,7 @@ def setup_ind():
     Adivinar.desarrollo(turnos,word)
     
     dibujo.Tortuga.fin() #la tortuga termina su proceso
-        
     endWait()
-        
     
     
     
